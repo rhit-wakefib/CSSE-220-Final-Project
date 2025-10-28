@@ -29,10 +29,12 @@ public class GameComponent extends JComponent{ // Model class following MVC hold
     
     public final Timer timer;                       // NEW
 //    private final ArrayList<Ball> balls = new ArrayList<>();   // NEW
+    private Player p;
     
     public GameComponent() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         
+       this.p = new Player(80, 80);
 //        balls.add(new Ball( 80,  80));
 //        balls.add(new Ball(180, 140));
 //        balls.add(new Ball(300, 220));
@@ -66,7 +68,7 @@ public class GameComponent extends JComponent{ // Model class following MVC hold
 //			b.draw(g2);
 //		}
 		
-//        this.ball.draw(g2);
+        this.p.draw(g2);
 	}
 	
 	public void addBall(int x, int y) {

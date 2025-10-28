@@ -14,5 +14,8 @@ public abstract class Entity {
 		health += (-damage);
 	}
 	
+    protected void move() {
 
+    }
+	
 }
