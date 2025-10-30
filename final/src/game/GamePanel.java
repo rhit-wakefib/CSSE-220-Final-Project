@@ -20,7 +20,7 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel {
 	
     // models
-	private final BallModel ballModel = new BallModel();;
+	private final EnemyModel ballModel = new EnemyModel();;
 	private final HudModel hudModel = new HudModel();;
 	// views
 	private final GameComponent canvas = new GameComponent(ballModel,hudModel);

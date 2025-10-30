@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BallModel {
+public class EnemyModel {
 	
-	private List<Ball> balls = new ArrayList<>();
+	private List<Enemy> balls = new ArrayList<>();
 	
 	
 	 public void addBall(int x, int y) {
-	        balls.add(new Ball(x, y));
+	        balls.add(new Enemy(x, y));
 	    }
 	 
 // Called each tick from the timer */
  	public void updateAll(int width, int height) {
- 		for (Ball b: balls) {
+ 		for (Enemy b: balls) {
  		b.move(width, height);
  		handleCollisions();
  		
@@ -27,14 +27,14 @@ public class BallModel {
  		return balls.size();
  	}
  	
- 	public List<Ball> getBalls() {
+ 	public List<Enemy> getBalls() {
  		return balls;
  	}
  	
  	private void handleCollisions() {
  	    for (int i = 0; i < balls.size(); i++) {
  	        for (int j = i + 1; j < balls.size(); j++) {
- 	            Ball a = balls.get(i), b = balls.get(j);
+ 	            Enemy a = balls.get(i), b = balls.get(j);
 
  	            int dx = a.x - b.x, dy = a.y - b.y;
  	            int rSum = a.radius + b.radius;

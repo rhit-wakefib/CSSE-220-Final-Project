@@ -19,12 +19,12 @@ public class GameComponent extends JComponent {
 	public static final Color FG = Color.BLACK;
 	private int x1 = WIDTH/2, x2 = WIDTH/2;
 	private int y1 = HEIGHT/8, y2 = HEIGHT/8 *7;
-	private final BallModel model;
+	private final EnemyModel model;
 	private final HudModel hud;
 
 	
 	
-	public GameComponent(BallModel model, HudModel hud) {
+	public GameComponent(EnemyModel model, HudModel hud) {
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		//  seed a couple so something is visible immediately
 	    this.model = model;
@@ -45,7 +45,7 @@ public class GameComponent extends JComponent {
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setColor(FG);
 			g2.drawLine(x1, y1, x2, y2);
-	        for (Ball b : model.getBalls()) {
+	        for (Enemy b : model.getBalls()) {
 	            b.draw(g2);
 	        }
 			
