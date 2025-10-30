@@ -11,9 +11,8 @@ public class Player extends Entity {
     private Color color = Color.RED;
     
     public Player(int x, int y) {
-    	super();
-    	this.x = x;
-    	this.y = y;
+    	super(x,y);
+
     }
 
 	

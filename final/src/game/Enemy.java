@@ -9,16 +9,16 @@ import javax.imageio.ImageIO;
 
 public class Enemy extends Entity {
 
-	int x, y;
-    int dx = 3, dy = 2;
-    int radius = 15;
+	
+
     Color color = Color.RED;
     private BufferedImage sprite;
     private boolean spriteLoaded = false;
 
     public Enemy(int x, int y) {
-        this.x = x;
-        this.y = y;
+
+    	super(x,y);
+    	
         try {
 			sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
 			spriteLoaded = true;
@@ -44,20 +44,5 @@ public class Enemy extends Entity {
         
     	}
     }
-
-    public void move(int width, int height) {
-        x += dx;
-        y += dy;
-        // wrap around the edges
-        
-        // Left/right
-        if (x - radius < 0) { x = radius; dx = -dx; }
-        else if (x + radius > width) { x = width - radius; dx = -dx; }
-
-        // Top/bottom
-        if (y - radius < 0) { y = radius; dy = -dy; }
-        else if (y + radius > height) { y = height - radius; dy = -dy; }
-    }
-
     
 }
