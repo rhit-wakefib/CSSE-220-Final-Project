@@ -2,24 +2,47 @@ package game;
 
 import javax.swing.JFrame;
 
+/**
+ * Top-level application window for the game.
+ * <p>
+ * This class sets up the main {@link JFrame} that contains the {@link GamePanel}.
+ * The {@link #show()} method should be called from {@link Main}
+ * to make the window visible.
+ * </p>
+ * 
+ * <h2>Responsibilities:</h2>
+ * <ul>
+ *   <li>Create the main application frame</li>
+ *   <li>Attach the {@link GamePanel} as the content area</li>
+ *   <li>Configure window title, size, and close behavior</li>
+ *   <li>Expose a {@code show()} method to display the frame</li>
+ * </ul>
+ * 
+ * */
+
+
 public class GameApp {
+	private final JFrame frame = new JFrame("Template");
+	private final GamePanel panel = new GamePanel();
+	
+	/**
+     * Constructs the main game window and attaches the {@link GamePanel}.
+     * The window is configured but not made visible yet.
+     */
+	public GameApp() {
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(panel);
+        frame.pack();                  // Fit to preferred component sizes
+        frame.setLocationRelativeTo(null); // Center on screen
+		
+	}
 
+	/**
+     * Displays the game window on screen.
+     */
+	public void show() {
+		frame.setVisible(true);
 
-    private final JFrame frame = new JFrame("Moving Object — Key Listener");
-    private GamePanel panel = new GamePanel();
-    
-    public GameApp() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // kills all threads
-//        frame.add(panel); // don't want to use this because it will only dedicate a portion of the screen to this.
-        frame.setContentPane(panel);   // add our game panel. sets the entire screen instead of just a portion (add)
-        frame.pack();                            // size to panel's preferred size
-        frame.setLocationRelativeTo(null);       // centered placement. null means whatever your devices relative center is
-    }
+	}
 
-    public void show() { // starts the game
-        frame.setVisible(true); // makes the frame visible
-    }
-    
 }
-
-
