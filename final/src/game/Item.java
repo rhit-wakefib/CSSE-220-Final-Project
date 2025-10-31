@@ -10,13 +10,27 @@ import javax.imageio.ImageIO;
 
 
 public abstract class Item {
-	private int x,y;
-	private Color color;
-	private int radius;
-	private BufferedImage sprite; 
-	private boolean spriteLoaded = false;
-	private String Image;
+	protected int x;
+	protected int y;
+	protected Color color;
+	protected int radius;
+	protected BufferedImage sprite; 
+	protected boolean spriteLoaded = false;
+	protected String Image;
 	
+	
+	public Item() {
+		  
+	        try {
+				sprite = ImageIO.read(Item.class.getResource(Image));
+				spriteLoaded = true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				spriteLoaded=false;
+			} 
+	        
+	 }
 	
 	 public Item(int x, int y) {
 		  this.x = x;
