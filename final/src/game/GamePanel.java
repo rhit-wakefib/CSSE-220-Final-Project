@@ -22,8 +22,8 @@ import Entities.EnemyModel;
 public class GamePanel extends JPanel {
 	
     // models
-	private final EnemyModel ballModel = new EnemyModel();;
-	private final HudModel hudModel = new HudModel();;
+	private final EnemyModel ballModel = new EnemyModel();
+	private final HudModel hudModel = new HudModel();
 	// views
 	private final GameComponent canvas = new GameComponent(ballModel,hudModel);
 	private final HudViewer hudView = new HudViewer();

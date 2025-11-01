@@ -7,6 +7,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @author's Braden Wakefield
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ * 
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
+
 public class Enemy extends Entity {
 
 	
