@@ -48,7 +48,7 @@ public class GamePanel extends JPanel {
     	hudView.setAlignmentX(0f);        // Left edge
     	hudView.setAlignmentY(0f);        // Top edge
     	layered.add(hudView);             // Add after canvas → goes on top
-       
+    	hudView.refresh(hudModel);
     	// PANEL LAYOUT
     	this.setLayout(new BorderLayout());
     	this.add(layered, BorderLayout.CENTER);
@@ -71,7 +71,6 @@ public class GamePanel extends JPanel {
     // control animation
     private void tick() {
 
-//    	hudModel.setBallCount(canvas.ballModel.getBallCount());
     	hudView.refresh(hudModel);
     	canvas.updateState();
     	canvas.repaint();

@@ -20,7 +20,8 @@ public class HudModel {
     	this.ballCount = count; 
     	}
     public void updateAll(int width, int height) {
-}
+    	score+=1;
+    }
 }
     
 

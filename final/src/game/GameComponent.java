@@ -59,6 +59,8 @@ public class GameComponent extends JComponent {
 	        	p.update();
 	        	repaint();
 	        });
+	    setOpaque(true);		
+
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
 		this.platforms.add(new Platform(130, 150, 0, 0, this));
@@ -140,6 +142,7 @@ public class GameComponent extends JComponent {
 		public void updateState() {
 			// Each is big enough to be in a helper method.
 //	    	ballModel.updateAll(WIDTH, groundY); // or canvas.getWidth(), Height()
+			hud.updateAll(WIDTH, HEIGHT);
 			updatePlatforms();
 			updateEnemies();
 			handleCollisions();
@@ -172,13 +175,6 @@ public class GameComponent extends JComponent {
 					}
 				}
 			
-			for( Entity e: enemies){
-				for( AbstractPlatform p2: platforms){
-						if (e.overlaps(p2)) {
-							e.collideWithPlatform(p2);
-						}
-					}
-				}
 			
 			for( AbstractPlatform p1: platforms){
 				for( AbstractPlatform p2: platforms){
