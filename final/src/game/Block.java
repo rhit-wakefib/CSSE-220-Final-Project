@@ -1,19 +1,19 @@
 package game;
 
-
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Powerup extends Item {
+public class Block extends Item {
 	 private int radius = 8;
+	 private int value;
 	 private String image = "US_One_Cent_Obv.png";
-	 // implement some sort 
 	 
-	 public Powerup(int x, int y) {
-		 	super(x,y);
+	 public Block(int x, int y,int value) {
+		 super(x,y);
 		    this.x = x;
 	        this.y = y;
+	        this.value=value;
 	        try {
 				sprite = ImageIO.read(Item.class.getResource(Image));
 				spriteLoaded = true;
