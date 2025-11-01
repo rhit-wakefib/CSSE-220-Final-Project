@@ -1,6 +1,10 @@
 package game;
 
+import Entities.Player;
+
+
 public class HudModel {
+	public Player player;
 
 	
 	private int score = 0;
@@ -15,6 +19,8 @@ public class HudModel {
     public void setBallCount(int count) { 
     	this.ballCount = count; 
     	}
+    public void updateAll(int width, int height) {
+}
 }
     
 

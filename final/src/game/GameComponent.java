@@ -53,10 +53,10 @@ public class GameComponent extends JComponent {
 	    setOpaque(true);
 //		model.addBall(100, 100);
 //	    model.addBall(200, 60);
-//	    timer = new Timer(30, e-> {
-//	        	model.updateAll(WIDTH, HEIGHT);
-//	        	repaint();
-//	        });
+	    timer = new Timer(30, e-> {
+	        	hud.updateAll(WIDTH, HEIGHT);
+	        	repaint();
+	        });
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
 		this.platforms.add(new Platform(130, 150, 0, 0, this));
@@ -69,10 +69,12 @@ public class GameComponent extends JComponent {
 //        ballModel.addBall(230, 200, 0, 5, this);
 		
 		this.p = new Player(400, groundY, 0, 5, this);
+//		
     
 	}
-	
-		
+
+	public void start() { timer.start(); }     // NEW
+	public void stop()  { timer.stop(); } 
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
