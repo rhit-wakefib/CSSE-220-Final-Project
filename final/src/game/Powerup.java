@@ -11,6 +11,7 @@ public class Powerup extends Item {
 	 // implement some sort 
 	 
 	 public Powerup(int x, int y) {
+		 	super(x,y);
 		    this.x = x;
 	        this.y = y;
 	        try {
