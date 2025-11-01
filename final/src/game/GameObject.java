@@ -46,6 +46,11 @@ public abstract class GameObject {
 	public void update() {
 		this.x += this.xVelocity;
 		this.y += this.yVelocity;
+		
+		if (this.y > gameComponent.getGroundY()) {
+			this.y = gameComponent.getGroundY();
+			reverseDirection(); // delete later just for test
+		}
 	}
 	
 	public void reverseDirection() {

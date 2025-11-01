@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
 
-import Entities.EnemyModel;
 
 /**
  * Controller class for the game.
@@ -22,10 +21,10 @@ import Entities.EnemyModel;
 public class GamePanel extends JPanel {
 	
     // models
-	private final EnemyModel ballModel = new EnemyModel();
+
 	private final HudModel hudModel = new HudModel();
 	// views
-	private final GameComponent canvas = new GameComponent(ballModel,hudModel);
+	private final GameComponent canvas = new GameComponent(hudModel);
 	private final HudViewer hudView = new HudViewer();
 	
 	// loop
@@ -58,10 +57,7 @@ public class GamePanel extends JPanel {
     	
     
         this.buildKeys();
-        //Models
-        
-        ballModel.addBall(100, 100); // just to have initial balls
-        ballModel.addBall(200, 60);
+      
         // game loop
         this.timer = new Timer(30, e -> tick());
     	
@@ -69,9 +65,10 @@ public class GamePanel extends JPanel {
     
     // control animation
     private void tick() {
-    	ballModel.updateAll(canvas.getWidth(), canvas.getGroundY()); // or canvas.getWidth(), Height()
-    	hudModel.setBallCount(ballModel.getBallCount());
+
+//    	hudModel.setBallCount(canvas.ballModel.getBallCount());
     	hudView.refresh(hudModel);
+    	canvas.updateState();
     	canvas.repaint();
     }
     
@@ -92,12 +89,6 @@ public class GamePanel extends JPanel {
         return controls;
     }
     
-    private void addBall(int x, int y ) {
-        ballModel.addBall(x, y);
-        hudModel.addScore(5);  // example scoring rule on add
-        hudModel.setBallCount(ballModel.getBallCount());
-        canvas.repaint();
-    }
     
     public void startGame() { timer.start(); }
     public void stopGame()  { timer.stop();  }
@@ -120,7 +111,7 @@ private void buildKeys() {
 	                case KeyEvent.VK_B -> {
 	                    int x = (int)(Math.random() * canvas.getWidth());
 	                    int y = (int)(Math.random() * canvas.getHeight());
-	                    canvas.addBall(x, y);
+//	                    canvas.addBall(x, y);
 	                }
 	                
 	                case KeyEvent.VK_S -> {

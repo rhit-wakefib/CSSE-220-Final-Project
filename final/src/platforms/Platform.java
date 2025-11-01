@@ -12,7 +12,7 @@ import game.GameComponent;
  * into a shower of RainDrops. 
  *
  */
-public class BouncingPlatform extends AbstractPlatform {
+public class Platform extends AbstractPlatform {
 	private static final int WIDTH = 80;
 	private static final int HEIGHT = 20;
 	private static final int RED_START = 222, GREEN_START=184, BLUE_START=135, WATER_INCREMENT=5;
@@ -21,7 +21,7 @@ public class BouncingPlatform extends AbstractPlatform {
 	private int invincibleCount = 0;
 	private boolean bounced;
 	
-	public BouncingPlatform(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
+	public Platform(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);
 	}
 
@@ -39,7 +39,7 @@ public class BouncingPlatform extends AbstractPlatform {
 	public void update() {
 		super.update();
 		if ( isOffScreen()  ) {
-			this.reverseDirection();
+//			this.reverseDirection();
 		}
 		invincibleCount--;
 		bounced =false;

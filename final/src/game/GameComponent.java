@@ -13,13 +13,14 @@ import javax.swing.JComponent;
 import javax.swing.Timer;
 
 import Entities.Enemy;
-import Entities.EnemyModel;
+import Entities.Entity;
+import Entities.Player;
 //import drops.AbstractDrop;
 //import drops.DamagingDrop;
 //import drops.HealingDrop;
 //import drops.InvincibilityDrop;
 import platforms.AbstractPlatform;
-import platforms.BouncingPlatform;
+import platforms.Platform;
 
 
 
@@ -35,16 +36,19 @@ public class GameComponent extends JComponent {
 	private int y1 = HEIGHT/8, y2 = HEIGHT/8 *7;
 	private int groundStartX = 0, groundEndX = WIDTH;
 	private int groundY = HEIGHT - (HEIGHT/4);
-	private final EnemyModel model;
+
 	private final HudModel hud;
 	
 	private List<AbstractPlatform> platforms = new ArrayList<>();
+	private List<Entity> enemies = new ArrayList<>();
+	
+	private Player p;
 
 	
-	public GameComponent(EnemyModel model, HudModel hud) {
+	public GameComponent(HudModel hud) {
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		//  seed a couple so something is visible immediately
-	    this.model = model;
+
 	    this.hud = hud;
 	    setOpaque(true);
 //		model.addBall(100, 100);
@@ -53,10 +57,18 @@ public class GameComponent extends JComponent {
 //	        	model.updateAll(WIDTH, HEIGHT);
 //	        	repaint();
 //	        });
-		this.platforms.add(new BouncingPlatform(200, 100, 5, 0, this));
-		this.platforms.add(new BouncingPlatform(30,  100, 0, 5, this));
-		this.platforms.add(new BouncingPlatform(130, 150, 0, 5, this));
-		this.platforms.add(new BouncingPlatform(230, 200, 0, 5, this));
+		this.platforms.add(new Platform(200, 100, 0, 0, this));
+		this.platforms.add(new Platform(30,  100, 0, 0, this));
+		this.platforms.add(new Platform(130, 150, 0, 0, this));
+		this.platforms.add(new Platform(230, 200, 0, 0, this));
+		
+  //Models
+        
+		this.enemies.add(new Enemy(300, 170, 0, 5, this));
+		this.enemies.add(new Enemy(350, 170, 0, 5, this));
+//        ballModel.addBall(230, 200, 0, 5, this);
+		
+		this.p = new Player(400, groundY, 0, 5, this);
     
 	}
 		
@@ -75,9 +87,11 @@ public class GameComponent extends JComponent {
 				platform.drawOn(g2);
 			}
 			
-	        for (Enemy b : model.getBalls()) {
-	            b.draw(g2);
-	        }
+			for (Entity e : this.enemies) {
+				e.drawOn(g2);
+			}
+			
+			p.drawOn(g2);
 			
 		}
 		
@@ -93,19 +107,15 @@ public class GameComponent extends JComponent {
 		}	
 
 		    
-		// helper to add more balls at runtime (used below)
-		public void addBall(int x, int y) {
-		model.addBall(x,y);
-		repaint();
-		}
-		
 		public int getGroundY() {
 			return groundY;
 		}
 		
 		public void updateState() {
 			// Each is big enough to be in a helper method.
+//	    	ballModel.updateAll(WIDTH, groundY); // or canvas.getWidth(), Height()
 			updatePlatforms();
+			updateEnemies();
 			handleCollisions();
 		}
 		
@@ -113,6 +123,7 @@ public class GameComponent extends JComponent {
 			List<GameObject> allObjects = new ArrayList<>();
 //			allObjects.addAll( this.drops);
 			allObjects.addAll( this.platforms);
+			allObjects.addAll( this.enemies);
 			
 			//drop and platform collisions
 //			for(AbstractDrop r: drops){
@@ -125,6 +136,22 @@ public class GameComponent extends JComponent {
 //				}
 //			}
 			
+			for( Entity e: enemies){
+				for( AbstractPlatform p2: platforms){
+						if (e.overlaps(p2)) {
+							e.collideWithPlatform(p2);
+						}
+					}
+				}
+			
+			for( Entity e: enemies){
+				for( AbstractPlatform p2: platforms){
+						if (e.overlaps(p2)) {
+							e.collideWithPlatform(p2);
+						}
+					}
+				}
+			
 			for( AbstractPlatform p1: platforms){
 				for( AbstractPlatform p2: platforms){
 					if (p1 != p2) {
@@ -134,6 +161,7 @@ public class GameComponent extends JComponent {
 					}
 				}
 			}
+			
 			
 			
 			List<GameObject> shouldRemove = new ArrayList<>();
@@ -158,6 +186,14 @@ public class GameComponent extends JComponent {
 				platform.update();
 			}
 		}
+		
+		private void updateEnemies() {
+			for (Entity e : this.enemies) {
+				e.update();
+			}
+		}
+		
+		
 			
 //		public void toggleBoxDirection() {
 //			this.userPlatform.reverseDirection();

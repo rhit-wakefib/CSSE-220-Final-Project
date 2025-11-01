@@ -34,6 +34,7 @@ public class GameApp {
         frame.setContentPane(panel);
         frame.pack();                  // Fit to preferred component sizes
         frame.setLocationRelativeTo(null); // Center on screen
+        frame.setResizable(false);
 		
 	}
 
