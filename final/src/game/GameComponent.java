@@ -21,6 +21,7 @@ public class GameComponent extends JComponent {
 	private int y1 = HEIGHT/8, y2 = HEIGHT/8 *7;
 	private final EnemyModel model;
 	private final HudModel hud;
+	Timer timer;
 
 	
 	
@@ -32,10 +33,11 @@ public class GameComponent extends JComponent {
 	    setOpaque(true);
 //		model.addBall(100, 100);
 //	    model.addBall(200, 60);
-//	    timer = new Timer(30, e-> {
-//	        	model.updateAll(WIDTH, HEIGHT);
-//	        	repaint();
-//	        });
+	   
+	    timer = new Timer(30, e-> {
+	        	model.updateAll(WIDTH, HEIGHT);
+	        	repaint();
+	        });
     
 	}
 		

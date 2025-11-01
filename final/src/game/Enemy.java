@@ -11,7 +11,7 @@ public class Enemy extends Entity {
 
 	int x, y;
     int dx = 3, dy = 2;
-    int radius = 15;
+    int radius = 30;
     Color color = Color.RED;
     private BufferedImage sprite;
     private boolean spriteLoaded = false;
@@ -20,7 +20,7 @@ public class Enemy extends Entity {
         this.x = x;
         this.y = y;
         try {
-			sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
+			sprite = ImageIO.read(Enemy.class.getResource("Villager.png"));
 			spriteLoaded = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -60,6 +60,7 @@ public class GamePanel extends JPanel {
         
         ballModel.addBall(100, 100); // just to have initial balls
         ballModel.addBall(200, 60);
+        ballModel.addBall(200, 30);
         // game loop
         this.timer = new Timer(30, e -> tick());
     	
