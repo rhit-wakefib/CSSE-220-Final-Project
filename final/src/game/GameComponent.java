@@ -21,7 +21,7 @@ public class GameComponent extends JComponent {
 	private int x1 = WIDTH/2, x2 = WIDTH/2;
 	private int y1 = HEIGHT/8, y2 = HEIGHT/8 *7;
 	private int groundStartX = 0, groundEndX = WIDTH;
-	private int groundY = HEIGHT - (HEIGHT/3);
+	private int groundY = HEIGHT - (HEIGHT/4);
 	private final EnemyModel model;
 	private final HudModel hud;
 
@@ -47,7 +47,7 @@ public class GameComponent extends JComponent {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			
-			Rectangle r = new Rectangle(groundStartX,groundY, WIDTH, HEIGHT);
+			Rectangle r = new Rectangle(groundStartX, groundY, WIDTH, HEIGHT);
 			
 			g2.setColor(FG);
 			g2.drawLine(x1, y1, x2, y2);
@@ -74,10 +74,15 @@ public class GameComponent extends JComponent {
 		}	
 
 		    
-		    // helper to add more balls at runtime (used below)
-		    public void addBall(int x, int y) {
-		       model.addBall(x,y);
-		    	 repaint();
-		    }
+		// helper to add more balls at runtime (used below)
+		public void addBall(int x, int y) {
+		model.addBall(x,y);
+		repaint();
+		}
+		
+		public int getGroundY() {
+			return groundY;
+		}
+		   
 
 }

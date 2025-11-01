@@ -67,7 +67,7 @@ public class GamePanel extends JPanel {
     
     // control animation
     private void tick() {
-    	ballModel.updateAll(canvas.getHeight(), canvas.getWidth()); // or canvas.getWidth(), Height()
+    	ballModel.updateAll(canvas.getWidth(), canvas.getGroundY()); // or canvas.getWidth(), Height()
     	hudModel.setBallCount(ballModel.getBallCount());
     	hudView.refresh(hudModel);
     	canvas.repaint();
