@@ -80,17 +80,17 @@ public class GamePanel extends JPanel {
     
     private JComponent buildControls() {
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 6));
-        JButton center  = new JButton("Center");
-        JButton left = new JButton("Left");
-        JButton right = new JButton("Right");
-
-        left.addActionListener(e -> { canvas.moveDelta(-10); requestFocusInWindow(); });
-        right.addActionListener(e -> { canvas.moveDelta(+10); requestFocusInWindow(); });
-        center.addActionListener(e -> { canvas.setX(canvas.WIDTH/2); requestFocusInWindow(); });
-
-        controls.add(left); 
-        controls.add(right);
-        controls.add(center);
+//        JButton center  = new JButton("Center");
+//        JButton left = new JButton("Left");
+//        JButton right = new JButton("Right");
+//
+//        left.addActionListener(e -> { canvas.moveDelta(-10); requestFocusInWindow(); });
+//        right.addActionListener(e -> { canvas.moveDelta(+10); requestFocusInWindow(); });
+//        center.addActionListener(e -> { canvas.setX(canvas.WIDTH/2); requestFocusInWindow(); });
+//
+//        controls.add(left); 
+//        controls.add(right);
+//        controls.add(center);
         return controls;
     }
     

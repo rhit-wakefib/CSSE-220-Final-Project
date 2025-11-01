@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D.Double;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +56,7 @@ public class GameComponent extends JComponent {
 //		model.addBall(100, 100);
 //	    model.addBall(200, 60);
 	    timer = new Timer(30, e-> {
-	        	hud.updateAll(WIDTH, HEIGHT);
+	        	p.update();
 	        	repaint();
 	        });
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
@@ -70,7 +72,28 @@ public class GameComponent extends JComponent {
 		
 		this.p = new Player(400, groundY, 0, 5, this);
 //		
-    
+    buildKeys();
+	}
+	private void buildKeys() {
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+		
+		this.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT -> p.moveLeft();
+                case KeyEvent.VK_RIGHT -> p.moveRight();
+               
+			}
+		}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				  switch (e.getKeyCode()) {
+                  case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> p.stopMoving();
+			}
+			}
+	});
 	}
 
 	public void start() { timer.start(); }     // NEW
@@ -121,6 +144,8 @@ public class GameComponent extends JComponent {
 			updateEnemies();
 			handleCollisions();
 		}
+		
+		
 		
 		private void handleCollisions() {
 			List<GameObject> allObjects = new ArrayList<>();

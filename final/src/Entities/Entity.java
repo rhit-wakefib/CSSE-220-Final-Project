@@ -8,7 +8,9 @@ import game.GameObject;
 import platforms.AbstractPlatform;
 
 public abstract class Entity extends GameObject {
-
+	protected double x;
+	protected double y;
+	protected double dx, dy;
 	protected int health = 3;
 	protected int damage;
 
