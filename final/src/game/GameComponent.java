@@ -147,13 +147,6 @@ public class GameComponent extends JComponent {
 					}
 				}
 			
-			for( Entity e: enemies){
-				for( AbstractPlatform p2: platforms){
-						if (e.overlaps(p2)) {
-							e.collideWithPlatform(p2);
-						}
-					}
-				}
 			
 			for( AbstractPlatform p1: platforms){
 				for( AbstractPlatform p2: platforms){
