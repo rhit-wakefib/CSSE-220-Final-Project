@@ -19,18 +19,7 @@ public abstract class Item {
 	protected String Image;
 	
 	
-	public Item() {
-		  
-	        try {
-				sprite = ImageIO.read(Item.class.getResource(Image));
-				spriteLoaded = true;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				spriteLoaded=false;
-			} 
-	        
-	 }
+	
 	
 	 public Item(int x, int y) {
 		  this.x = x;

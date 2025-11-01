@@ -10,6 +10,7 @@ public class Coin extends Item {
 	 private String image = "US_One_Cent_Obv.png";
 	 
 	 public Coin(int x, int y,int value) {
+		 super(x,y);
 		    this.x = x;
 	        this.y = y;
 	        this.value=value;
