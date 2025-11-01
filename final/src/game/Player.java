@@ -5,9 +5,9 @@ import java.awt.Graphics2D;
 
 public class Player extends Entity {
 	
-    private int x, y;
-    private int dx = 3, dy = 2;
-    private int radius = 15;
+    protected int x, y;
+    protected int dx = 3, dy = 2;
+    protected int radius = 15;
     private Color color = Color.RED;
     
     public Player(int x, int y) {
