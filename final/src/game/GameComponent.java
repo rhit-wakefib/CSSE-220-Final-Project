@@ -50,13 +50,8 @@ public class GameComponent extends JComponent {
 		//  seed a couple so something is visible immediately
 
 	    this.hud = hud;
-	    setOpaque(true);
-//		model.addBall(100, 100);
-//	    model.addBall(200, 60);
-	    timer = new Timer(30, e-> {
-	        	hud.updateAll(WIDTH, HEIGHT);
-	        	repaint();
-	        });
+	    setOpaque(true);		
+
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
 		this.platforms.add(new Platform(130, 150, 0, 0, this));
@@ -117,6 +112,7 @@ public class GameComponent extends JComponent {
 		public void updateState() {
 			// Each is big enough to be in a helper method.
 //	    	ballModel.updateAll(WIDTH, groundY); // or canvas.getWidth(), Height()
+			hud.updateAll(WIDTH, HEIGHT);
 			updatePlatforms();
 			updateEnemies();
 			handleCollisions();
