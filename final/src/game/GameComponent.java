@@ -9,6 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
+import Entities.Enemy;
+import Entities.EnemyModel;
+
 
 
 public class GameComponent extends JComponent {

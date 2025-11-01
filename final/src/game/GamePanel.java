@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
 
+import Entities.EnemyModel;
+
 /**
  * Controller class for the game.
  * Handles user input (buttons + keys) and controls the main Timer loop.
