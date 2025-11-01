@@ -43,7 +43,7 @@ public class GameComponent extends JComponent {
 	private List<Entity> enemies = new ArrayList<>();
 	
 	private Player p;
-
+	Timer timer;
 	
 	public GameComponent(HudModel hud) {
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
@@ -71,6 +71,7 @@ public class GameComponent extends JComponent {
 		this.p = new Player(400, groundY, 0, 5, this);
     
 	}
+	
 		
 		@Override
 		protected void paintComponent(Graphics g) {
