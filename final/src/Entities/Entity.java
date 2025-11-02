@@ -33,11 +33,7 @@ public abstract class Entity extends GameObject {
 	}
 	
 	@Override
-	public void collideWithPlatform(AbstractPlatform otherPlatform) {
-		this.reverseDirection();
-		this.update();
-//		bounced =true;
-	}
+	public void collideWithPlatform(AbstractPlatform otherPlatform) {}
 	
 	@Override 
 	public void update() {
@@ -60,7 +56,7 @@ public abstract class Entity extends GameObject {
 				down = false;
 			}
 			
-			this.y += 3;
+//			this.y += 3;
 			
 		} else {
 			this.x += this.xVelocity;

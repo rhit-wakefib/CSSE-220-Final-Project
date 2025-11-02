@@ -12,8 +12,8 @@ import platforms.AbstractPlatform;
 
 public class Player extends Entity {
 	
-	private static final int WIDTH = 80;
-	private static final int HEIGHT = 20;
+	private static final int WIDTH = 30;
+	private static final int HEIGHT = 30;
 
 
     Color color = Color.RED;
@@ -37,14 +37,35 @@ public class Player extends Entity {
 	@Override
 	public void drawOn(Graphics2D g2) {
 		if (spriteLoaded) {
-    		int drawX = (int) this.getX() - 30;
-    		int drawY = (int) this.getY() - 70;
-    		int size = radius *7;
+    		int drawX = (int) this.getX() - WIDTH;
+    		int drawY = (int) this.getY() - HEIGHT;
+    		int size = WIDTH*2;
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
     	} else {
     	
   
     	}
+	}
+	
+	@Override
+	public void collideWithPlatform(AbstractPlatform platform) {
+
+//		if (this.y > platform.getY()) {
+//				this.y = platform.getY();
+//			} else {
+//			this.y = platform.getY();
+////			reverseDirection(); // delete later just for test
+//			}
+		
+		if (this.x > platform.getX() + platform.getWidth()) {
+			this.x = this.WIDTH + platform.getX() + platform.getWidth() + 4;
+		} 
+		else  if (this.x < platform.getX() + platform.getWidth()) {
+		this.x = platform.getX() - 10;
+//		reverseDirection(); // delete later just for test
+		}
+		this.update();
+//		bounced =true;
 	}
 
 }

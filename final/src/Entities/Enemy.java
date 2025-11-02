@@ -69,6 +69,13 @@ public class Enemy extends Entity {
 			this.reverseDirection();
 		}
 	}
+	
+	@Override
+	public void collideWithPlatform(AbstractPlatform otherPlatform) {
+		this.reverseDirection();
+		this.update();
+//		bounced =true;
+	}
 
 
     

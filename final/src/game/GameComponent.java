@@ -62,7 +62,7 @@ public class GameComponent extends JComponent {
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
 		this.platforms.add(new Platform(130, 150, 0, 0, this));
-		this.platforms.add(new Platform(230, 200, 0, 0, this));
+		this.platforms.add(new Platform(300, 300, 0, 0, this));
 		
   //Models
         
@@ -156,6 +156,14 @@ public class GameComponent extends JComponent {
 							p1.collideWithPlatform(p2);
 						}
 					}
+				}
+			}
+			
+			// player collision with platform
+			for( AbstractPlatform p1: platforms){
+				if (p.overlaps(p1)) {
+//					p.y = p.y +(p1.y - p.y);
+					p.collideWithPlatform(p1);
 				}
 			}
 			
