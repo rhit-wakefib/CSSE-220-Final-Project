@@ -9,6 +9,14 @@ import game.GameComponent;
 import game.GameObject;
 import platforms.AbstractPlatform;
 
+/**
+ * @author Braden Wakefield, Terrel Doxie
+ * 
+ *  * Help Citation
+ * used CSSE220 materials
+ * player sprite is from https://cl.pinterest.com/pin/785244885024471618/
+ */
+
 public abstract class Entity extends GameObject {
 	protected int health = 3;
 	protected int damage;
