@@ -31,20 +31,13 @@ public class Enemy extends Entity {
 	private static final int HEIGHT = 20;
 
     Color color = Color.RED;
-    private BufferedImage sprite;
-    private boolean spriteLoaded = false;
+
 
     public Enemy(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);    	
-        try {
-			sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
-			spriteLoaded = true;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			spriteLoaded = false;
-			//e.printStackTrace();
-		}
+		isPlayer = false;
+		loadSprite();
     }
 
 
@@ -57,8 +50,8 @@ public class Enemy extends Entity {
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
     	} else {
     	
-        g2.setColor(color);
-        g2.fillOval((int)this.getX() - radius, (int)this.getY() - radius, radius * 2, radius * 2);		
+//        g2.setColor(color);
+//        g2.fillOval((int)this.getX() - radius, (int)this.getY() - radius, radius * 2, radius * 2);		
     	}
 	}
 	

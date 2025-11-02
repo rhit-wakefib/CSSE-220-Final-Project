@@ -1,5 +1,10 @@
 package Entities;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import game.GameComponent;
 import game.GameObject;
 import platforms.AbstractPlatform;
@@ -7,6 +12,9 @@ import platforms.AbstractPlatform;
 public abstract class Entity extends GameObject {
 	protected int health = 3;
 	protected int damage;
+	
+    protected BufferedImage sprite;
+    protected boolean spriteLoaded = false;
 	
 	private static final double MOVE_SPEED = 5;
 	
@@ -41,18 +49,22 @@ public abstract class Entity extends GameObject {
 			
 			if (left) {
 				this.x -= MOVE_SPEED;
+				loadSprite();
 				left = false;
 			}
 			else if (right) {
 				this.x += MOVE_SPEED;
+				loadSprite();
 				right = false;
 			}
 			else if (up) {
 				this.y -= MOVE_SPEED;
+				loadSprite();
 				up = false;
 			}
 			else if (down) {
 				this.y += MOVE_SPEED;
+				loadSprite();
 				down = false;
 			}
 			
@@ -70,6 +82,69 @@ public abstract class Entity extends GameObject {
 			} else {
 			this.y = gameComponent.getGroundY();
 //			reverseDirection(); // delete later just for test
+			}
+		}
+	}
+	
+	public void loadSprite() {
+		
+		if(isPlayer) {
+			if(left) {
+		        try {
+					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+					spriteLoaded = true;
+				} catch (IOException e) {
+		
+					spriteLoaded = false;
+					//e.printStackTrace();
+				}
+			} else if (right) {
+		        	try {
+						sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
+						spriteLoaded = true;
+					} catch (IOException e) {
+			
+						spriteLoaded = false;
+						//e.printStackTrace();
+					}
+		        }
+			else if (up) {
+	        	try {
+					sprite = ImageIO.read(Player.class.getResource("pDown.png"));
+					spriteLoaded = true;
+				} catch (IOException e) {
+		
+					spriteLoaded = false;
+					//e.printStackTrace();
+				}
+	        }
+			else if (down) {
+	        	try {
+					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+					spriteLoaded = true;
+				} catch (IOException e) {
+		
+					spriteLoaded = false;
+					//e.printStackTrace();
+				}
+	        } else {
+		        try {
+					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+					spriteLoaded = true;
+				} catch (IOException e) {
+		
+					spriteLoaded = false;
+					//e.printStackTrace();
+				}
+	        }
+		} else if (!isPlayer){
+	        try {
+				sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
+				spriteLoaded = true;
+			} catch (IOException e) {
+
+				spriteLoaded = false;
+				//e.printStackTrace();
 			}
 		}
 	}

@@ -17,20 +17,13 @@ public class Player extends Entity {
 
 
     Color color = Color.RED;
-    private BufferedImage sprite;
-    private boolean spriteLoaded = false;
-	
+//    private BufferedImage sprite;
+//    private boolean spriteLoaded = false;
+//	
     public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
 		isPlayer = true;
-        try {
-			sprite = ImageIO.read(Enemy.class.getResource("epicplayerss.png"));
-			spriteLoaded = true;
-		} catch (IOException e) {
-
-			spriteLoaded = false;
-			//e.printStackTrace();
-		}
+        loadSprite();
     }
 
 
