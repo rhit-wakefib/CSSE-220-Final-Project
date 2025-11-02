@@ -56,7 +56,7 @@ public abstract class Entity extends GameObject {
 				down = false;
 			}
 			
-//			this.y += 3;
+			this.y += 3;
 			
 		} else {
 			this.x += this.xVelocity;
