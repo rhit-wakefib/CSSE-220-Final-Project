@@ -7,12 +7,17 @@ import platforms.AbstractPlatform;
 // TODO: Refactor Raindrop, Platform, (and hopefully that lone box?) into GameObjects.
 public abstract class GameObject {
 	
-	private double x, y;
-	private double yVelocity;
-	private double xVelocity;
+	protected double x, y;
+	protected double yVelocity;
+	protected double xVelocity;
 	private boolean shouldRemove;
 	private double width;
 	private double height;
+//	public boolean left;
+//	public boolean right;
+//	public boolean up;
+//	public boolean down;
+	
 	protected GameComponent gameComponent;
 	
 	
@@ -44,19 +49,19 @@ public abstract class GameObject {
 
 	// updatePosition, fall, ... can all be consolidated into an update method.
 	public void update() {
-		this.x += this.xVelocity;
-		this.y += this.yVelocity;
 		
-		if (this.y > gameComponent.getGroundY()) {
-			this.y = gameComponent.getGroundY();
-			reverseDirection(); // delete later just for test
-		}
+//		if(left) {
+//			moveLeft();
+//		}
+//			
+
 	}
 	
 	public void reverseDirection() {
 		this.xVelocity = -this.xVelocity;
 		this.yVelocity = -this.yVelocity;
 	}
+	
 	
 	// fall, willExplode, ...
 	public boolean shouldRemove() {

@@ -45,6 +45,7 @@ public class GameComponent extends JComponent {
 	private List<Entity> enemies = new ArrayList<>();
 	
 	private Player p;
+	
 	Timer timer;
 	
 	public GameComponent(HudModel hud) {
@@ -55,11 +56,13 @@ public class GameComponent extends JComponent {
 	    setOpaque(true);
 //		model.addBall(100, 100);
 //	    model.addBall(200, 60);
-	    timer = new Timer(30, e-> {
-	        	p.update();
-	        	repaint();
-	        });
+//	    timer = new Timer(30, e-> {
+//	        	p.update();
+//	        	repaint();
+//	        });
 	    setOpaque(true);		
+	    
+		this.p = new Player(400, 100, 2, 0, this);
 
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
@@ -68,38 +71,17 @@ public class GameComponent extends JComponent {
 		
   //Models
         
-		this.enemies.add(new Enemy(300, 170, 0, 5, this));
+		this.enemies.add(new Enemy(300, 168, 3, 0, this));
 		this.enemies.add(new Enemy(350, 170, 0, 5, this));
 //        ballModel.addBall(230, 200, 0, 5, this);
 		
-		this.p = new Player(400, groundY, 0, 5, this);
+
 //		
-    buildKeys();
-	}
-	private void buildKeys() {
-		this.setFocusable(true);
-		this.requestFocusInWindow();
-		
-		this.addKeyListener(new KeyAdapter(){
-			@Override
-			public void keyPressed(KeyEvent e) {
-				switch (e.getKeyCode()) {
-                case KeyEvent.VK_LEFT -> p.moveLeft();
-                case KeyEvent.VK_RIGHT -> p.moveRight();
-               
-			}
-		}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				  switch (e.getKeyCode()) {
-                  case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> p.stopMoving();
-			}
-			}
-	});
+	
 	}
 
-	public void start() { timer.start(); }     // NEW
-	public void stop()  { timer.stop(); } 
+//	public void start() { timer.start(); }     // NEW
+//	public void stop()  { timer.stop(); } 
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
@@ -141,8 +123,8 @@ public class GameComponent extends JComponent {
 		
 		public void updateState() {
 			// Each is big enough to be in a helper method.
-//	    	ballModel.updateAll(WIDTH, groundY); // or canvas.getWidth(), Height()
 			hud.updateAll(WIDTH, HEIGHT);
+			p.update();
 			updatePlatforms();
 			updateEnemies();
 			handleCollisions();
@@ -217,11 +199,15 @@ public class GameComponent extends JComponent {
 			}
 		}
 		
+		public void moveLeft() {
+			this.p.moveLeft();
+		}
 		
-			
-//		public void toggleBoxDirection() {
-//			this.userPlatform.reverseDirection();
-//		}
+		public void moveRight() {
+			this.p.moveRight();
+		}
+		
+
 //
 //		public void createRainDrop(Double boundingBox) {
 //			this.drops.add(new DamagingDrop(boundingBox, this));

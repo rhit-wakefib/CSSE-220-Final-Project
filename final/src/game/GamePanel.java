@@ -106,17 +106,17 @@ private void buildKeys() {
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
-	                case KeyEvent.VK_LEFT -> canvas.moveDelta(-10);
-	                case KeyEvent.VK_RIGHT -> canvas.moveDelta(10);
+	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
+	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();
 	                }
-	                case KeyEvent.VK_B -> {
-	                    int x = (int)(Math.random() * canvas.getWidth());
-	                    int y = (int)(Math.random() * canvas.getHeight());
-//	                    canvas.addBall(x, y);
-	                }
+//	                case KeyEvent.VK_B -> {
+//	                    int x = (int)(Math.random() * canvas.getWidth());
+//	                    int y = (int)(Math.random() * canvas.getHeight());
+////	                    canvas.addBall(x, y);
+//	                }
 	                
 	                case KeyEvent.VK_S -> {
 	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());

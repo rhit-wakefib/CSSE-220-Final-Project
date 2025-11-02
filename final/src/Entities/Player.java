@@ -14,12 +14,7 @@ public class Player extends Entity {
 	
 	private static final int WIDTH = 80;
 	private static final int HEIGHT = 20;
-	private static final int MOVE_SPEED = 5;
-	
-	
-	//movement
-	private boolean movingLeft = false;
-	private boolean movingRight = false;
+
 
     Color color = Color.RED;
     private BufferedImage sprite;
@@ -27,7 +22,7 @@ public class Player extends Entity {
 	
     public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
-
+		isPlayer = true;
         try {
 			sprite = ImageIO.read(Enemy.class.getResource("epicplayerss.png"));
 			spriteLoaded = true;
@@ -52,26 +47,20 @@ public class Player extends Entity {
     	}
 	}
 
+	
+
+	public void moveLeft() {
+		left = true;
+	}
+	public void moveRight() {
+		right = true;
+	}
+
+
 	@Override
 	public void collideWithPlatform(AbstractPlatform otherPlatform) {
 		// TODO Auto-generated method stub
 		
 	}
-	public void moveLeft() {
-		movingLeft = true;
-		dx = -MOVE_SPEED;
-	}
-	public void moveRight() {
-		movingRight = true;
-		dx = MOVE_SPEED;
-	}
-	public void stopMoving() {
-		movingLeft = false;
-		movingRight = false;
-		dx = 0;
-	}
-	public void update() {
-		x+=dx;
-		y+=dy;
-	}
+
 }
