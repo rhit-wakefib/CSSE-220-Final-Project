@@ -108,6 +108,8 @@ private void buildKeys() {
 	            switch (e.getKeyCode()) {
 	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
 	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
+	                case KeyEvent.VK_UP -> canvas.moveUp();
+	                case KeyEvent.VK_DOWN -> canvas.moveDown();
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();

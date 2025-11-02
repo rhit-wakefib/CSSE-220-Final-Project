@@ -30,8 +30,8 @@ import platforms.Platform;
 public class GameComponent extends JComponent {
 
 
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = 300;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 700;
 	public static final Color BG = Color.CYAN;
 	public static final Color FG = Color.GREEN;
 	private int x1 = WIDTH/2, x2 = WIDTH/2;
@@ -54,12 +54,7 @@ public class GameComponent extends JComponent {
 
 	    this.hud = hud;
 	    setOpaque(true);
-//		model.addBall(100, 100);
-//	    model.addBall(200, 60);
-//	    timer = new Timer(30, e-> {
-//	        	p.update();
-//	        	repaint();
-//	        });
+
 	    setOpaque(true);		
 	    
 		this.p = new Player(400, 100, 2, 0, this);
@@ -73,15 +68,11 @@ public class GameComponent extends JComponent {
         
 		this.enemies.add(new Enemy(300, 168, 3, 0, this));
 		this.enemies.add(new Enemy(350, 170, 0, 5, this));
-//        ballModel.addBall(230, 200, 0, 5, this);
-		
 
-//		
 	
 	}
 
-//	public void start() { timer.start(); }     // NEW
-//	public void stop()  { timer.stop(); } 
+
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
@@ -205,6 +196,14 @@ public class GameComponent extends JComponent {
 		
 		public void moveRight() {
 			this.p.moveRight();
+		}
+		
+		public void moveUp() {
+			this.p.moveUp();
+		}
+		
+		public void moveDown() {
+			this.p.moveDown();
 		}
 		
 

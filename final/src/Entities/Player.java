@@ -27,7 +27,7 @@ public class Player extends Entity {
 			sprite = ImageIO.read(Enemy.class.getResource("epicplayerss.png"));
 			spriteLoaded = true;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			spriteLoaded = false;
 			//e.printStackTrace();
 		}
@@ -45,22 +45,6 @@ public class Player extends Entity {
     	
   
     	}
-	}
-
-	
-
-	public void moveLeft() {
-		left = true;
-	}
-	public void moveRight() {
-		right = true;
-	}
-
-
-	@Override
-	public void collideWithPlatform(AbstractPlatform otherPlatform) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -1,20 +1,14 @@
 package Entities;
 
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D.Double;
-
 import game.GameComponent;
 import game.GameObject;
 import platforms.AbstractPlatform;
 
 public abstract class Entity extends GameObject {
-//	protected double x;
-//	protected double y;
-//	protected double dx, dy;
 	protected int health = 3;
 	protected int damage;
 	
-	private static final int MOVE_SPEED = 5;
+	private static final double MOVE_SPEED = 5;
 	
 	
 	//movement
@@ -38,6 +32,13 @@ public abstract class Entity extends GameObject {
 		this.update();
 	}
 	
+	@Override
+	public void collideWithPlatform(AbstractPlatform otherPlatform) {
+		this.reverseDirection();
+		this.update();
+//		bounced =true;
+	}
+	
 	@Override 
 	public void update() {
 		if(isPlayer) {
@@ -52,20 +53,43 @@ public abstract class Entity extends GameObject {
 			}
 			else if (up) {
 				this.y -= MOVE_SPEED;
+				up = false;
 			}
 			else if (down) {
 				this.y += MOVE_SPEED;
+				down = false;
 			}
+			
+			this.y += 3;
+			
 		} else {
 			this.x += this.xVelocity;
 			this.y += this.yVelocity;
 			
 			}
 		
-		if (this.y > gameComponent.getGroundY()) {
+		if (this.y >= gameComponent.getGroundY()) {
+			if(isPlayer) {
+				this.y = gameComponent.getGroundY();
+			} else {
 			this.y = gameComponent.getGroundY();
-			reverseDirection(); // delete later just for test
+//			reverseDirection(); // delete later just for test
+			}
 		}
+	}
+	
+	public void moveLeft() {
+		left = true;
+	}
+	public void moveRight() {
+		right = true;
+	}
+	public void moveUp() {
+		up = true;
+	}
+	
+	public void moveDown() {
+		down = true;
 	}
 		
 	

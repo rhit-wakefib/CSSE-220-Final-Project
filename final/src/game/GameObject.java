@@ -13,10 +13,6 @@ public abstract class GameObject {
 	private boolean shouldRemove;
 	private double width;
 	private double height;
-//	public boolean left;
-//	public boolean right;
-//	public boolean up;
-//	public boolean down;
 	
 	protected GameComponent gameComponent;
 	
@@ -48,14 +44,7 @@ public abstract class GameObject {
 	}
 
 	// updatePosition, fall, ... can all be consolidated into an update method.
-	public void update() {
-		
-//		if(left) {
-//			moveLeft();
-//		}
-//			
-
-	}
+	public void update() {}
 	
 	public void reverseDirection() {
 		this.xVelocity = -this.xVelocity;
