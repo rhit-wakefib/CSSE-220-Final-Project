@@ -31,7 +31,7 @@ public class HudViewer extends JLabel {
             "<html><h2 style='margin:0;padding:0;'>Score</h2><ol>"
         );
         html.append("<li>Current: ").append(hud.getScore()).append("</li>");
-        html.append("<li>Balls: ").append(hud.getBallCount()).append("</li>");
+        html.append("<li>Coins: ").append(hud.getcoinCount()).append("</li>");
         html.append("</ol></html>");
         setText(html.toString());
     }
