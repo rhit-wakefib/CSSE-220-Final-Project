@@ -117,17 +117,6 @@ public class GameComponent extends JComponent {
 			
 		}
 		
-		public void moveDelta(int dx) {
-	        x1 += dx; x2 += dx;
-	        repaint(); 
-		}
-		
-		public void setX(int i) {
-			x1 = i;
-			x2 = i;
-		    repaint();
-		}	
-
 		    
 		public int getGroundY() {
 			return groundY;
@@ -136,10 +125,11 @@ public class GameComponent extends JComponent {
 		public void updateState() {
 			// Each is big enough to be in a helper method.
 			hud.updateAll(WIDTH, HEIGHT);
-			p.update();
 			updatePlatforms();
 			updateEnemies();
 			handleCollisions();
+			p.update();
+			
 		}
 		
 		
