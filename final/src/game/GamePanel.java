@@ -128,16 +128,24 @@ private void buildKeys() {
 ////	                    canvas.addBall(x, y);
 //	                }
 	                
+
+//	                case KeyEvent.VK_S -> {
+//	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
+//	                    // quick feedback (optional)
+//	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
+//	                }
+
 	                case KeyEvent.VK_S -> {
-	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
+	                    ScoreManager.save(hudModel.getScore(), hudModel.getcoinCount());
 	                    // quick feedback (optional)
-	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
+	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getcoinCount());
 	                }
+	                
 	                default -> {
 	                	timer.stop();
 	                    javax.swing.JOptionPane.showMessageDialog(
 	                        null,
-	                        "Invalid key! Use arrow keys, SPACE, or S.",
+	                        "Invalid key! Use arrow keys, or SPACE.",
 	                        "Invalid Key",
 	                        javax.swing.JOptionPane.WARNING_MESSAGE
 	                        

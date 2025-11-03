@@ -32,7 +32,7 @@ public class Player extends Entity {
     Color color = Color.RED;
 //    private BufferedImage sprite;
 //    private boolean spriteLoaded = false;
-//	
+
     public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
 		isPlayer = true;

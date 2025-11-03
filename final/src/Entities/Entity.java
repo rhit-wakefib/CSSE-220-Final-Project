@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import game.GameComponent;
 import game.GameObject;
@@ -35,7 +36,10 @@ public abstract class Entity extends GameObject {
 	protected boolean up = false;
 	protected boolean down = false;
 	protected boolean isPlayer = false;
-	protected boolean updateSprite = false;
+	
+	
+	protected boolean eRight = false;
+	protected boolean eLeft = false;
 
     int radius = 15;
 	
@@ -86,10 +90,14 @@ public abstract class Entity extends GameObject {
 			
 		} else {
 			
-			if(updateSprite) {
+			if(eRight) {
 				loadSprite();
-				updateSprite = false;
+				eRight = false;
+			} else if (eLeft){
+				loadSprite();
+				eLeft = false;
 			}
+			
 			this.x += this.xVelocity;
 			this.y += this.yVelocity;
 
@@ -114,8 +122,9 @@ public abstract class Entity extends GameObject {
 					spriteLoaded = true;
 				} catch (IOException e) {
 		
+					
 					spriteLoaded = false;
-					//e.printStackTrace();
+
 				}
 			} else if (right) {
 		        	try {
@@ -124,6 +133,9 @@ public abstract class Entity extends GameObject {
 					} catch (IOException e) {
 			
 						spriteLoaded = false;
+						JOptionPane.showMessageDialog(null, "Wrong Input", "beep boop", JOptionPane.WARNING_MESSAGE);
+						System.out.println("Error" + e.getMessage());
+						//e.printStackTrace();
 						//e.printStackTrace();
 					}
 		        }
@@ -156,29 +168,40 @@ public abstract class Entity extends GameObject {
 					//e.printStackTrace();
 				}
 	        }
-		} else if (!isPlayer){
-			if(updateSprite) {
-	        try {
-				sprite = ImageIO.read(Enemy.class.getResource("tennisBallLeft.png"));
-				spriteLoaded = true;
-			} catch (IOException e) {
-
-				spriteLoaded = false;
-				//e.printStackTrace();
-			}
-		}
-			else {
-				try {
-					sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
-					spriteLoaded = true;
-				} catch (IOException e) {
-
-					spriteLoaded = false;
-					//e.printStackTrace();
-					
+			} else if (!isPlayer){
+				if(eRight) {
+			        try {
+						sprite = ImageIO.read(Enemy.class.getResource("eright.png"));
+						spriteLoaded = true;
+					} catch (IOException e) {
+		
+						spriteLoaded = false;
+						//e.printStackTrace();
+					}
+			        
+				} else if (eLeft) {
+					try {
+						sprite = ImageIO.read(Enemy.class.getResource("eleft.png"));
+						spriteLoaded = true;
+						eLeft = false;
+					} catch (IOException e) {
+	
+						spriteLoaded = false;
+						//e.printStackTrace();
+						
+					}
+				} else {
+					try {
+						sprite = ImageIO.read(Enemy.class.getResource("eleft.png"));
+						spriteLoaded = true;
+						eLeft = false;
+					} catch (IOException e) {
+	
+						spriteLoaded = false;
+						//e.printStackTrace();
+						
+					}
 				}
-				
-			}
 		}
 	}
 	
