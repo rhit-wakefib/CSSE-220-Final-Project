@@ -17,9 +17,15 @@ public class SpecialBlock extends Item {
 	        this.y = y;
 	        try {
 				sprite = ImageIO.read(Item.class.getResource(image));
+				if(sprite==null) {
+					System.err.println("Could not find/load image" + image);
+					spriteLoaded = false;
+				}else {
 				spriteLoaded = true;
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				System.err.println("Error reading image: " + image);
 				e.printStackTrace();
 				spriteLoaded=false;
 			} 

@@ -33,6 +33,7 @@ public abstract class Entity extends GameObject {
 	protected boolean up = false;
 	protected boolean down = false;
 	protected boolean isPlayer = false;
+	protected boolean isEnemy = false;
 
     int radius = 15;
 	
@@ -53,7 +54,7 @@ public abstract class Entity extends GameObject {
 	
 	@Override 
 	public void update() {
-		if(isPlayer) {
+		if(isPlayer||isEnemy) {
 			
 			if (left) {
 				this.x -= MOVE_SPEED;
@@ -146,13 +147,26 @@ public abstract class Entity extends GameObject {
 				}
 	        }
 		} else if (!isPlayer){
+			if(left) {
 	        try {
-				sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
+				sprite = ImageIO.read(Enemy.class.getResource("tennisBallLeft.png"));
 				spriteLoaded = true;
 			} catch (IOException e) {
 
 				spriteLoaded = false;
 				//e.printStackTrace();
+			}
+		}
+			else {
+				try {
+					sprite = ImageIO.read(Enemy.class.getResource("tennis.png"));
+					spriteLoaded = true;
+				} catch (IOException e) {
+
+					spriteLoaded = false;
+					//e.printStackTrace();
+					
+				}
 			}
 		}
 	}
