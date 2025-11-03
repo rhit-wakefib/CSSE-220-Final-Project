@@ -26,7 +26,18 @@ import platforms.AbstractPlatform;
 import platforms.Platform;
 
 
+/**
+ * @author's Braden Wakefield Terrel Doxie Charlie Kofahl
+ * 
+ **************************************************************************************** 
 
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 
 public class GameComponent extends JComponent {
 

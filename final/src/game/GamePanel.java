@@ -12,6 +12,18 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
 
+/**
+ * @author's Braden Wakefield Terrel Doxie
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 
 /**
  * Controller class for the game.

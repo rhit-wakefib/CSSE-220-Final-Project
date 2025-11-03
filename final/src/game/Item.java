@@ -7,7 +7,20 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @author's Charlie Kofahl
+ * 
+ **************************************************************************************** 
 
+ *         REQUIRED HELP CITATION
+
+ *        used CSSE220 materials
+ *        https://onlinecoin.club/Coins/Country/United_States/One_Cent_2021/
+ *        Link to sprite image
+
+ *************************************************************************************** 
+ *
+ */
 
 public abstract class Item{
 	protected int x;

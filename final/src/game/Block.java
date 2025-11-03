@@ -1,7 +1,18 @@
 package game;
 
 
+/**
+ * @author's Charlie Kofahl
+ * 
+ **************************************************************************************** 
 
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 public class Block extends Item {
 	 
 	 private int value;

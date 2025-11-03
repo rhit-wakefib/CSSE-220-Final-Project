@@ -10,6 +10,19 @@ import javax.imageio.ImageIO;
 import game.GameComponent;
 import platforms.AbstractPlatform;
 
+/**
+ * @author's Braden Wakefield
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
+
 public class Player extends Entity {
 	
 	private static final int WIDTH = 30;
@@ -49,14 +62,15 @@ public class Player extends Entity {
 //			this.y = platform.getY();
 ////			reverseDirection(); // delete later just for test
 //			}
-		
-		if (this.x > platform.getX() + platform.getWidth()) {
-			this.x = this.WIDTH + platform.getX() + platform.getWidth() + 4;
-		} 
-		else  if (this.x < platform.getX() + platform.getWidth()) {
-		this.x = platform.getX() - 10;
-//		reverseDirection(); // delete later just for test
-		}
+		this.x = this.x + (platform.getX() - this.x);
+		this.y = platform.getY()-50;
+//		if (this.x > platform.getX() + platform.getWidth()) {
+//			this.x = this.WIDTH + platform.getX() + platform.getWidth();
+//		} 
+//		else  if (this.x < platform.getX() + platform.getWidth()) {
+//		this.x = platform.getX();
+////		reverseDirection(); // delete later just for test
+//		}
 		this.update();
 //		bounced =true;
 	}

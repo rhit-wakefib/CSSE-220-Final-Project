@@ -5,6 +5,18 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @author's Charlie Kofahl
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 public class SpecialBlock extends Item {
 
 	 private int radius = 8;

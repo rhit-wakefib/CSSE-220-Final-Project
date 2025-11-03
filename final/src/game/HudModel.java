@@ -2,7 +2,18 @@ package game;
 
 import Entities.Player;
 
+/**
+ * @author's Braden Wakefield Terrel Doxie
+ * 
+ **************************************************************************************** 
 
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 public class HudModel {
 	public Player player;
 

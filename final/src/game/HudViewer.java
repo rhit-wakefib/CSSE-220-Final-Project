@@ -5,6 +5,19 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+/**
+ * @author's Braden Wakefield Terrel Doxie
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
+
 public class HudViewer extends JLabel {
 	
 	public HudViewer() {

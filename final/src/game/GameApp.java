@@ -2,6 +2,19 @@ package game;
 
 import javax.swing.JFrame;
 
+
+/**
+ * @author's Braden Wakefield Terrel Doxie Charlie Kofahl
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
 /**
  * Top-level application window for the game.
  * <p>

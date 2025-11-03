@@ -13,7 +13,7 @@ import game.GameComponent;
 import platforms.AbstractPlatform;
 
 /**
- * @author's Braden Wakefield
+ * @author's Braden Wakefield Terrel Doxie
  * 
  **************************************************************************************** 
 

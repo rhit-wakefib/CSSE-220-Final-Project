@@ -11,6 +11,18 @@ import java.util.List;
 
 public class ScoreManager {
 
+	/**
+	 * @author's Charlie Kofahl
+	 * 
+	 **************************************************************************************** 
+
+	 *         REQUIRED HELP CITATION
+
+	 *         DONE: "only used CSSE220 materials"
+
+	 *************************************************************************************** 
+	 *
+	 */
 	
 	private static final String FILE = "data/scores.txt";
 	

@@ -4,7 +4,19 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import platforms.AbstractPlatform;
 
-// TODO: Refactor Raindrop, Platform, (and hopefully that lone box?) into GameObjects.
+/**
+ * @author's Braden Wakefield 
+ * 
+ **************************************************************************************** 
+
+ *         REQUIRED HELP CITATION
+
+ *         DONE: "only used CSSE220 materials"
+
+ *************************************************************************************** 
+ *
+ */
+
 public abstract class GameObject {
 	
 	protected double x, y;
