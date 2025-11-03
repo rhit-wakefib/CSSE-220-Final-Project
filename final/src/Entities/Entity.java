@@ -141,9 +141,7 @@ public abstract class Entity extends GameObject {
 					} catch (IOException e) {
 			
 						spriteLoaded = false;
-						JOptionPane.showMessageDialog(null, "Wrong Input", "beep boop", JOptionPane.WARNING_MESSAGE);
-						System.out.println("Error" + e.getMessage());
-						//e.printStackTrace();
+
 					}
 		        }
 			else if (up) {
@@ -193,11 +191,10 @@ public abstract class Entity extends GameObject {
 			        	if (Player.class.getResource("eright.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("eright.png"));
 							spriteLoaded = true;
-				        	}else {
+				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
 			        	
-			        	eRight = false;
 					} catch (IOException e) {
 		
 						spriteLoaded = false;
@@ -209,11 +206,10 @@ public abstract class Entity extends GameObject {
 			        	if (Player.class.getResource("eleft.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
 							spriteLoaded = true;
-				        	}else {
+				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
 			        	
-			        	eLeft = false;
 					} catch (IOException e) {
 	
 						spriteLoaded = false;
@@ -225,7 +221,7 @@ public abstract class Entity extends GameObject {
 			        	if (Player.class.getResource("eleft.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
 							spriteLoaded = true;
-				        	}else {
+				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
 					} catch (IOException e) {
