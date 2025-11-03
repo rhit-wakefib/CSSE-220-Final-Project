@@ -15,6 +15,7 @@ import platforms.AbstractPlatform;
  *  * Help Citation
  * used CSSE220 materials
  * player sprite is from https://cl.pinterest.com/pin/785244885024471618/
+ * enemy sprite https://favpng.com/png_view/minecraft-creeper-minecraft-creeper-character-png/XfFXQzHD
  */
 
 public abstract class Entity extends GameObject {
@@ -33,7 +34,7 @@ public abstract class Entity extends GameObject {
 	protected boolean up = false;
 	protected boolean down = false;
 	protected boolean isPlayer = false;
-	protected boolean isEnemy = false;
+	protected boolean updateSprite = false;
 
     int radius = 15;
 	
@@ -54,7 +55,7 @@ public abstract class Entity extends GameObject {
 	
 	@Override 
 	public void update() {
-		if(isPlayer||isEnemy) {
+		if(isPlayer) {
 			
 			if (left) {
 				this.x -= MOVE_SPEED;
@@ -80,9 +81,14 @@ public abstract class Entity extends GameObject {
 			this.y += 3;
 			
 		} else {
+			
+			if(updateSprite) {
+				loadSprite();
+				updateSprite = false;
+			}
 			this.x += this.xVelocity;
 			this.y += this.yVelocity;
-			
+
 			}
 		
 		if (this.y >= gameComponent.getGroundY()) {
@@ -147,7 +153,7 @@ public abstract class Entity extends GameObject {
 				}
 	        }
 		} else if (!isPlayer){
-			if(left) {
+			if(updateSprite) {
 	        try {
 				sprite = ImageIO.read(Enemy.class.getResource("tennisBallLeft.png"));
 				spriteLoaded = true;

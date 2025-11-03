@@ -60,12 +60,14 @@ public class Enemy extends Entity {
 		super.update();
 		if (isOffScreen()  ) {
 			this.reverseDirection();
+			updateSprite = true;
 		}
 	}
 	
 	@Override
 	public void collideWithPlatform(AbstractPlatform otherPlatform) {
 		this.reverseDirection();
+		updateSprite = true;
 		this.update();
 //		bounced =true;
 	}
