@@ -166,6 +166,7 @@ public class GameComponent extends JComponent {
 			    int rSum = b.radius + 30;
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
+			    	hud.addCoin(1);
 			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
 			    }
 			}

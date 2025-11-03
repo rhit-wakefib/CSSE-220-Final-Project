@@ -19,19 +19,22 @@ public class HudModel {
 
 	
 	private int score = 0;
-    private int ballCount = 0;
+    private int coinCount = 0;
 
     public int getScore() { return score; }
-    public int getBallCount() { return ballCount; }
+    public int getcoinCount() { return coinCount; }
     
     public void addScore(int delta) { 
     	this.score +=delta; 
     	}
-    public void setBallCount(int count) { 
-    	this.ballCount = count; 
+    public void addCoin(int toadd) { 
+    	this.coinCount +=toadd; 
+    	}
+    public void setcoinCount(int count) { 
+    	this.coinCount = count; 
     	}
     public void updateAll(int width, int height) {
-    	score+=1;
+    	//removig this for now since its only use is a tick counter / displayer it has no actual use
     }
 }
     
