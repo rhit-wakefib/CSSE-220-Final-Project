@@ -9,19 +9,20 @@ import javax.imageio.ImageIO;
 
 
 
-public abstract class Item {
+public abstract class Item{
 	protected int x;
 	protected int y;
 	protected Color color;
 	protected int radius;
 	protected BufferedImage sprite; 
 	protected boolean spriteLoaded = false;
-	protected String Image;
+	protected GameComponent gameComponent;
 	
 	
 	
 	
-	 public Item(int x, int y) {
+	 public Item(int x, int y, String Image) {
+		
 		  this.x = x;
 	        this.y = y;
 	        try {
@@ -39,7 +40,7 @@ public abstract class Item {
 	
 	
 	
-	 public void draw(Graphics2D g2) {
+	 public void drawOn(Graphics2D g2) {
 			if (spriteLoaded) {
 	    		int drawX= x-radius;
 	    		int drawY= y-radius;

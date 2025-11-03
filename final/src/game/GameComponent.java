@@ -17,6 +17,7 @@ import javax.swing.Timer;
 import Entities.Enemy;
 import Entities.Entity;
 import Entities.Player;
+
 //import drops.AbstractDrop;
 //import drops.DamagingDrop;
 //import drops.HealingDrop;
@@ -43,6 +44,7 @@ public class GameComponent extends JComponent {
 	
 	private List<AbstractPlatform> platforms = new ArrayList<>();
 	private List<Entity> enemies = new ArrayList<>();
+	private List<Block> blocks = new ArrayList<>();
 	
 	private Player p;
 	
@@ -68,6 +70,8 @@ public class GameComponent extends JComponent {
         
 		this.enemies.add(new Enemy(300, 168, 3, 0, this));
 		this.enemies.add(new Enemy(350, 170, 0, 5, this));
+		
+		this.blocks.add(new Block(500,200,1));
 
 	
 	}
@@ -90,6 +94,12 @@ public class GameComponent extends JComponent {
 			
 			for (Entity e : this.enemies) {
 				e.drawOn(g2);
+			}
+			
+			p.drawOn(g2);
+			
+			for (Block b : this.blocks) {
+				b.drawOn(g2);
 			}
 			
 			p.drawOn(g2);
@@ -129,6 +139,7 @@ public class GameComponent extends JComponent {
 			allObjects.addAll( this.platforms);
 			allObjects.addAll( this.enemies);
 			
+			
 			//drop and platform collisions
 //			for(AbstractDrop r: drops){
 //				for(AbstractPlatform p: platforms){
@@ -148,6 +159,16 @@ public class GameComponent extends JComponent {
 					}
 				}
 			
+			List<Block> toRemove = new ArrayList<>();
+			for (Block b : blocks) {
+			    double dx = b.x - p.x, dy = b.y - p.y;
+			    int rSum = b.radius + 30;
+			    if (dx*dx + dy*dy <= rSum*rSum) {
+			    	toRemove.add(b);
+			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
+			    }
+			}
+			blocks.removeAll(toRemove);
 			
 			for( AbstractPlatform p1: platforms){
 				for( AbstractPlatform p2: platforms){
