@@ -118,8 +118,12 @@ public abstract class Entity extends GameObject {
 		if(isPlayer) {
 			if(left) {
 		        try {
-					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
-					spriteLoaded = true;
+		        	if (Player.class.getResource("epicplayerss.png") != null) {
+						sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+						spriteLoaded = true;
+			        	} else {
+			        		System.out.println("no file could be found");
+			        	}
 				} catch (IOException e) {
 		
 					
@@ -128,21 +132,28 @@ public abstract class Entity extends GameObject {
 				}
 			} else if (right) {
 		        	try {
-						sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
-						spriteLoaded = true;
+			        	if (Player.class.getResource("epicPRight.png") != null) {
+							sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
+							spriteLoaded = true;
+				        	}else {
+				        		System.out.println("no file could be found");
+				        	}
 					} catch (IOException e) {
 			
 						spriteLoaded = false;
 						JOptionPane.showMessageDialog(null, "Wrong Input", "beep boop", JOptionPane.WARNING_MESSAGE);
 						System.out.println("Error" + e.getMessage());
 						//e.printStackTrace();
-						//e.printStackTrace();
 					}
 		        }
 			else if (up) {
 	        	try {
+		        	if (Player.class.getResource("pDown.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("pDown.png"));
 					spriteLoaded = true;
+		        	}else {
+		        		System.out.println("no file could be found");
+		        	}
 				} catch (IOException e) {
 		
 					spriteLoaded = false;
@@ -151,8 +162,12 @@ public abstract class Entity extends GameObject {
 	        }
 			else if (down) {
 	        	try {
+		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 					spriteLoaded = true;
+		        	}else {
+		        		System.out.println("no file could be found");
+		        	}
 				} catch (IOException e) {
 		
 					spriteLoaded = false;
@@ -160,8 +175,12 @@ public abstract class Entity extends GameObject {
 				}
 	        } else {
 		        try {
+		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 					spriteLoaded = true;
+		        	}else {
+		        		System.out.println("no file could be found");
+		        	}
 				} catch (IOException e) {
 		
 					spriteLoaded = false;
@@ -171,8 +190,14 @@ public abstract class Entity extends GameObject {
 			} else if (!isPlayer){
 				if(eRight) {
 			        try {
-						sprite = ImageIO.read(Enemy.class.getResource("eright.png"));
-						spriteLoaded = true;
+			        	if (Player.class.getResource("eright.png") != null) {
+							sprite = ImageIO.read(Player.class.getResource("eright.png"));
+							spriteLoaded = true;
+				        	}else {
+				        		System.out.println("no file could be found");
+				        	}
+			        	
+			        	eRight = false;
 					} catch (IOException e) {
 		
 						spriteLoaded = false;
@@ -181,9 +206,14 @@ public abstract class Entity extends GameObject {
 			        
 				} else if (eLeft) {
 					try {
-						sprite = ImageIO.read(Enemy.class.getResource("eleft.png"));
-						spriteLoaded = true;
-						eLeft = false;
+			        	if (Player.class.getResource("eleft.png") != null) {
+							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
+							spriteLoaded = true;
+				        	}else {
+				        		System.out.println("no file could be found");
+				        	}
+			        	
+			        	eLeft = false;
 					} catch (IOException e) {
 	
 						spriteLoaded = false;
@@ -192,9 +222,12 @@ public abstract class Entity extends GameObject {
 					}
 				} else {
 					try {
-						sprite = ImageIO.read(Enemy.class.getResource("eleft.png"));
-						spriteLoaded = true;
-						eLeft = false;
+			        	if (Player.class.getResource("eleft.png") != null) {
+							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
+							spriteLoaded = true;
+				        	}else {
+				        		System.out.println("no file could be found");
+				        	}
 					} catch (IOException e) {
 	
 						spriteLoaded = false;

@@ -184,7 +184,7 @@ public class GameComponent extends JComponent {
 			}
 			
 			// player collision with platform
-			for( AbstractPlatform p1: platforms){
+			for(AbstractPlatform p1: platforms){
 				if (p.overlaps(p1)) {
 //					p.y = p.y +(p1.y - p.y);
 					p.collideWithPlatform(p1);
@@ -239,7 +239,7 @@ public class GameComponent extends JComponent {
 		}
 		
 
-//
+
 //		public void createRainDrop(Double boundingBox) {
 //			this.drops.add(new DamagingDrop(boundingBox, this));
 //		}

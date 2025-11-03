@@ -56,25 +56,13 @@ public class Player extends Entity {
 	@Override
 	public void collideWithPlatform(AbstractPlatform platform) {
 
-//		if (this.y > platform.getY()) {
-//				this.y = platform.getY();
-//			} else {
-//			this.y = platform.getY();
-////			reverseDirection(); // delete later just for test
-//			}
-//		this.x = this.x + (platform.getX() - this.x);
+
 		this.y = platform.getY()-30;
 		if(up == false) {
 			this.y = platform.getY()-35;
 			this.update();
 		}
-//		if (this.x > platform.getX() + platform.getWidth()) {
-//			this.x = this.WIDTH + platform.getX() + platform.getWidth();
-//		} 
-//		else  if (this.x < platform.getX() + platform.getWidth()) {
-//		this.x = platform.getX();
-////		reverseDirection(); // delete later just for test
-//		}
+
 		this.update();
 //		bounced =true;
 	}
