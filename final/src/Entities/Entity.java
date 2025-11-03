@@ -25,7 +25,7 @@ public abstract class Entity extends GameObject {
     protected BufferedImage sprite;
     protected boolean spriteLoaded = false;
 	
-	private static final double MOVE_SPEED = 5;
+	
 	
 	
 	//movement
@@ -40,6 +40,7 @@ public abstract class Entity extends GameObject {
 	
 	public Entity(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent, int width, int height) {
 		super(gameComponent,x,y,xVelocity,yVelocity, width,height);
+		
 	}
 	
 	protected void takeDamage() {
@@ -58,22 +59,22 @@ public abstract class Entity extends GameObject {
 		if(isPlayer) {
 			
 			if (left) {
-				this.x -= MOVE_SPEED;
+				this.x -= xVelocity;
 				loadSprite();
 				left = false;
 			}
 			else if (right) {
-				this.x += MOVE_SPEED;
+				this.x += xVelocity;
 				loadSprite();
 				right = false;
 			}
 			else if (up) {
-				this.y -= MOVE_SPEED;
+				this.y -= yVelocity;
 				loadSprite();
 				up = false;
 			}
 			else if (down) {
-				this.y += MOVE_SPEED;
+				this.y += xVelocity;
 				loadSprite();
 				down = false;
 			}

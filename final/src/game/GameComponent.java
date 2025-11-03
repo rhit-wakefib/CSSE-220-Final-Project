@@ -70,7 +70,7 @@ public class GameComponent extends JComponent {
 
 	    setOpaque(true);		
 	    
-		this.p = new Player(400, 100, 2, 0, this);
+		this.p = new Player(400, 100, 5, 10, this);
 
 		this.platforms.add(new Platform(200, 100, 0, 0, this));
 		this.platforms.add(new Platform(30,  100, 0, 0, this));
