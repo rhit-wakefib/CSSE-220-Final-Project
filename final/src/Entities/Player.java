@@ -63,9 +63,9 @@ public class Player extends Entity {
 ////			reverseDirection(); // delete later just for test
 //			}
 //		this.x = this.x + (platform.getX() - this.x);
-		this.y = platform.getY()-20;
+		this.y = platform.getY()-30;
 		if(up == false) {
-			this.y = platform.getY()-30;
+			this.y = platform.getY()-35;
 			this.update();
 		}
 //		if (this.x > platform.getX() + platform.getWidth()) {
