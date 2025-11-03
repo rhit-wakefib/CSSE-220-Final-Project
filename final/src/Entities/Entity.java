@@ -137,7 +137,7 @@ public abstract class Entity extends GameObject {
 				}
 	        } else {
 		        try {
-					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+					sprite = ImageIO.read(Player.class.getResource("epicplyerss.png"));
 					spriteLoaded = true;
 				} catch (IOException e) {
 		
