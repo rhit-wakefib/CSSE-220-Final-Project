@@ -24,6 +24,7 @@ public abstract class Entity extends GameObject {
 	
     protected BufferedImage sprite;
     protected boolean spriteLoaded = false;
+    
 	
 	
 	
@@ -52,7 +53,9 @@ public abstract class Entity extends GameObject {
 	}
 	
 	@Override
-	public void collideWithPlatform(AbstractPlatform otherPlatform) {}
+	public void collideWithPlatform(AbstractPlatform otherPlatform) {
+		this.update();
+	}
 	
 	@Override 
 	public void update() {
@@ -74,7 +77,7 @@ public abstract class Entity extends GameObject {
 				up = false;
 			}
 			else if (down) {
-				this.y += xVelocity;
+				this.y += yVelocity;
 				loadSprite();
 				down = false;
 			}

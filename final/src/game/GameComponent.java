@@ -133,6 +133,7 @@ public class GameComponent extends JComponent {
 			return groundY;
 		}
 		
+		
 		public void updateState() {
 			// Each is big enough to be in a helper method.
 			hud.updateAll(WIDTH, HEIGHT);
