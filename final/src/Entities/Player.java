@@ -11,7 +11,7 @@ import game.GameComponent;
 import platforms.AbstractPlatform;
 
 /**
- * @author's Braden Wakefield
+ * @author's Braden Wakefield Terrel Doxie
  * 
  **************************************************************************************** 
 
@@ -59,12 +59,21 @@ public class Player extends Entity {
 
 		this.y = platform.getY()-30;
 		if(up == false) {
+
+//		if (this.y > platform.getY()) {
+//				this.y = platform.getY();
+//			} else {
+//			this.y = platform.getY();
+////			reverseDirection(); // delete later just for test
+//			}
+//		this.x = this.x + (platform.getX() - this.x);
+		//this.y = platform.getY()-30;
+		if(up == false||this.y == platform.getY()-30) {
 			this.y = platform.getY()-35;
 			this.update();
 		}
 
 		this.update();
-//		bounced =true;
+		}
 	}
-
 }
