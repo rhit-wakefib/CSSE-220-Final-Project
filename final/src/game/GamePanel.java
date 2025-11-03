@@ -121,6 +121,7 @@ private void buildKeys() {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();
 	                }
+	                
 //	                case KeyEvent.VK_B -> {
 //	                    int x = (int)(Math.random() * canvas.getWidth());
 //	                    int y = (int)(Math.random() * canvas.getHeight());
@@ -132,10 +133,19 @@ private void buildKeys() {
 	                    // quick feedback (optional)
 	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
 	                }
+	                default -> {
+	                	timer.stop();
+	                    javax.swing.JOptionPane.showMessageDialog(
+	                        null,
+	                        "Invalid key! Use arrow keys, SPACE, or S.",
+	                        "Invalid Key",
+	                        javax.swing.JOptionPane.WARNING_MESSAGE
+	                        
+	                    );
+	                    timer.start();}
 	            }
 	        }
 	    });
-		
 	}
 
 }
