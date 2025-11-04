@@ -38,7 +38,6 @@ public class GamePanel extends JPanel {
 	// views
 	private final GameComponent canvas = new GameComponent(hudModel);
 	private final HudViewer hudView = new HudViewer();
-	
 	// loop
 	private final Timer timer;
 	
@@ -117,6 +116,11 @@ private void buildKeys() {
 	                case KeyEvent.VK_RIGHT -> canvas.rightPressed();
 	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> canvas.downPressed();
+//	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
+//	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
+//	                case KeyEvent.VK_UP -> canvas.moveUp();
+//	                case KeyEvent.VK_DOWN -> canvas.moveDown();
+//	                case KeyEvent.VK_UP && KeyEvent.VK_RIGHT -> canvas.moveUpRight();
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();

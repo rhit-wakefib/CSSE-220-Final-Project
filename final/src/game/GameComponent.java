@@ -237,6 +237,10 @@ public class GameComponent extends JComponent {
 		public void downPressed() {
 			this.p.moveDown();
 		}
+		public void moveUpRight() {
+			this.p.moveUp();
+			this.p.moveRight();
+		}
 		
 
 
