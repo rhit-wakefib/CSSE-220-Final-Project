@@ -2,7 +2,9 @@ package game;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Timer;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -19,6 +21,7 @@ import javax.swing.JLabel;
  */
 
 public class HudViewer extends JLabel {
+	Timer timer;
 	
 	public HudViewer() {
 		setOpaque(false);
@@ -34,12 +37,23 @@ public class HudViewer extends JLabel {
 //        html.append("<li>Current: ").append(hud.getScore()).append("</li>");
 
         html.append("<li>Health: ").append(hud.getHealth1()).append("</li>");
+        if(hud.getHealth1() == 0) {
+        	//timer.stop();
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "You lost all of your lives!",
+                "Game Over",
+                javax.swing.JOptionPane.QUESTION_MESSAGE);
+            hud.health = 3;
+            
+        }
+        
 
         html.append("<li>Coins: ").append(hud.getcoinCount()).append("</li>");
 
         html.append("<li>Points: ").append(hud.getScore()).append("</li>");
 
-        html.append("<li>Score: ").append(hud.getScore()).append("</li>");
+ //       html.append("<li>Score: ").append(hud.getScore()).append("</li>");
 
         html.append("</ol></html>");
         setText(html.toString());

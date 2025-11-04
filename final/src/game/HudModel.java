@@ -21,7 +21,7 @@ public class HudModel {
 
 	private int scoreCount = 0;
 
-	private int health = 3;
+	protected int health = 3;
 
     private int coinCount = 0;
     private int score;

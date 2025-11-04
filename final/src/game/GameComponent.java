@@ -80,6 +80,7 @@ public class GameComponent extends JComponent {
         
 		this.enemies.add(new Enemy(300, 168, 3, 0, this));
 		this.enemies.add(new Enemy(350, 170, 0, 5, this));
+		this.enemies.add(new Enemy(225, 150, 2,2, this));
 		
 		this.blocks.add(new Block(500,200,1));
 
