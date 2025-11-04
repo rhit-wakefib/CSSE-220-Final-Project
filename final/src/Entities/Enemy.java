@@ -65,8 +65,9 @@ public class Enemy extends Entity {
 	}
 	
 	@Override
-	public void collideWithPlatform(AbstractPlatform otherPlatform) {
-		this.reverseDirection();
+	public void collideWithPlatform(AbstractPlatform plat) {
+		this.yVelocity = 0;
+		this.y = plat.getY() - (plat.getHeight()/2);
 		eLeft = true;
 		this.update();
 //		bounced =true;
