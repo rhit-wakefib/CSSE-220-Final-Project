@@ -242,6 +242,7 @@ public class GameComponent extends JComponent {
 			this.p.moveRight();
 		}
 		
+		
 
 
 //		public void createRainDrop(Double boundingBox) {

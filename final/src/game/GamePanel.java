@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
 
+
 /**
- * @author's Braden Wakefield Terrel Doxie
+ * @author's Braden Wakefield Terrell Doxie
  * 
  **************************************************************************************** 
 
@@ -40,6 +41,11 @@ public class GamePanel extends JPanel {
 	private final HudViewer hudView = new HudViewer();
 	// loop
 	private final Timer timer;
+	private boolean canPress = true;
+	private final int Cooldown = 700;
+	//private final int moveAmount = 10; 
+	private int upDuration = 500;
+
 	
     /**
      * Constructs the main game panel with controls and keyboard support.
@@ -114,8 +120,25 @@ private void buildKeys() {
 	            switch (e.getKeyCode()) {
 	                case KeyEvent.VK_LEFT -> canvas.leftPressed();
 	                case KeyEvent.VK_RIGHT -> canvas.rightPressed();
-	                case KeyEvent.VK_UP -> canvas.upPressed();
+//	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> canvas.downPressed();
+	                case KeyEvent.VK_UP ->{
+	                	if(!canPress) {
+	                		return;
+	                		
+	                	}
+	                	canPress = false;
+	                	javax.swing.Timer upTimer = new javax.swing.Timer(50, ev -> canvas.upPressed());
+	                    upTimer.start();
+	                    new javax.swing.Timer(upDuration, ev -> {
+	                        upTimer.stop();
+	                        ((javax.swing.Timer) ev.getSource()).stop();
+	                    }).start();
+	                	new javax.swing.Timer(Cooldown, ev->{
+	                		canPress = true;
+	                		((javax.swing.Timer) ev.getSource()).stop();
+	                	}).start();
+	                }
 //	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
 //	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
 //	                case KeyEvent.VK_UP -> canvas.moveUp();
