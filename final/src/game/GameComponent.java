@@ -149,15 +149,23 @@ public class GameComponent extends JComponent {
 //					}
 //				}
 //			}
-			
+			List<Entity> toRemove2 = new ArrayList<>();
 			for( Entity e: enemies){
 				for( AbstractPlatform p2: platforms){
 						if (e.overlaps(p2)) {
 							e.collideWithPlatform(p2);
 						}
+						if (e.overlaps(p2)) {
+							e.collideWithPlatform(p2);
+						}
+						
 					}
+				if (e.overlaps(p)) {
+					toRemove2.add(e);
+					hud.loseHealth1();
 				}
-			
+			}
+			enemies.removeAll(toRemove2);
 			List<Block> toRemove = new ArrayList<>();
 			for (Block b : blocks) {
 			    double dx = b.x - p.x, dy = b.y - p.y;
@@ -165,6 +173,7 @@ public class GameComponent extends JComponent {
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
 			    	hud.addCoin(1);
+			    	hud.gainScore();
 			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
 			    }
 			}
