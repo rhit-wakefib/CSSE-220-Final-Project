@@ -30,8 +30,9 @@ public class HudViewer extends JLabel {
         StringBuilder html = new StringBuilder(
             "<html><h2 style='margin:0;padding:0;'>Score</h2><ol>"
         );
-        html.append("<li>Current: ").append(hud.getScore()).append("</li>");
+//        html.append("<li>Current: ").append(hud.getScore()).append("</li>");
         html.append("<li>Coins: ").append(hud.getcoinCount()).append("</li>");
+        html.append("<li>Points: ").append(hud.getScore()).append("</li>");
         html.append("</ol></html>");
         setText(html.toString());
     }
