@@ -52,54 +52,33 @@ public abstract class Entity extends GameObject {
 		health += (-damage);
 	}
 	
-	public void collideWithFloor() {
-		this.update();
-	}
-	
-	@Override
-	public void collideWithPlatform(AbstractPlatform platform) {
-
-
-		this.y = platform.getY()-30;
-		if(up == false) {
-
-//		if (this.y > platform.getY()) {
-//				this.y = platform.getY();
-//			} else {
-//			this.y = platform.getY();
-////			reverseDirection(); // delete later just for test
-//			}
-//		this.x = this.x + (platform.getX() - this.x);
-		//this.y = platform.getY()-30;
-		if(up == false||this.y == platform.getY()-30) {
-			this.y = platform.getY()-35;
-			this.update();
-		}
-
-		this.update();
-		}
-	}
 	
 	@Override 
 	public void update() {
+		
 		this.y += 3;
+			
 		if(isPlayer) {
 			
+
 			if (left) {
 				this.x -= xVelocity;
 				loadSprite();
 				left = false;
 			}
+			
 			else if (right) {
 				this.x += xVelocity;
 				loadSprite();
 				right = false;
 			}
+			
 			else if (up) {
 				this.y -= yVelocity;
 				loadSprite();
 				up = false;
 			}
+			
 			else if (down) {
 				this.y += yVelocity;
 				loadSprite();
@@ -134,6 +113,7 @@ public abstract class Entity extends GameObject {
 	public void loadSprite() {
 		
 		if(isPlayer) {
+			
 			if(left) {
 		        try {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
@@ -153,7 +133,7 @@ public abstract class Entity extends GameObject {
 			        	if (Player.class.getResource("epicPRight.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
 							spriteLoaded = true;
-				        	}else {
+				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
 					} catch (IOException e) {
@@ -161,13 +141,15 @@ public abstract class Entity extends GameObject {
 						spriteLoaded = false;
 
 					}
+//		        	spriteLoaded = false;
+
 		        }
 			else if (up) {
 	        	try {
 		        	if (Player.class.getResource("pDown.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("pDown.png"));
 					spriteLoaded = true;
-		        	}else {
+		        	} else {
 		        		System.out.println("no file could be found");
 		        	}
 				} catch (IOException e) {
@@ -181,7 +163,7 @@ public abstract class Entity extends GameObject {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 					spriteLoaded = true;
-		        	}else {
+		        	} else {
 		        		System.out.println("no file could be found");
 		        	}
 				} catch (IOException e) {
@@ -194,7 +176,7 @@ public abstract class Entity extends GameObject {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 					spriteLoaded = true;
-		        	}else {
+		        	} else {
 		        		System.out.println("no file could be found");
 		        	}
 				} catch (IOException e) {
@@ -202,8 +184,8 @@ public abstract class Entity extends GameObject {
 					spriteLoaded = false;
 					//e.printStackTrace();
 				}
-	        }
-			} else if (!isPlayer){
+	        		}
+			} else if (!isPlayer) {
 				if(eRight) {
 			        try {
 			        	if (Player.class.getResource("eright.png") != null) {
@@ -257,13 +239,15 @@ public abstract class Entity extends GameObject {
 	public void moveLeft() {
 		left = true;
 	}
+	
 	public void moveRight() {
 		right = true;
 	}
+	
 	public void moveUp() {
 		up = true;
 	}
-	
+
 	public void moveDown() {
 		down = true;
 	}

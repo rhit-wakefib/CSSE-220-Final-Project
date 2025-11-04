@@ -18,14 +18,33 @@ public class HudModel {
 	public Player player;
 
 	
+
 	private int scoreCount = 0;
+
+	private int health = 3;
+
     private int coinCount = 0;
+    private int score;
+
 
     public int getScore() { return scoreCount; }
+
+    public int getHealth1() { return health; }
+
     public int getcoinCount() { return coinCount; }
+    public int getScore1() { return score; }
     
+
     public void addScore(int delta) { 
     	this.scoreCount = coinCount * 10; 
+    }
+
+    public void loseHealth1() { 
+    	this.health-=1;
+    	}
+    public void gainScore() { 
+    	this.score+=10;
+
     	}
     public void addCoin(int toadd) { 
     	this.coinCount +=toadd; 

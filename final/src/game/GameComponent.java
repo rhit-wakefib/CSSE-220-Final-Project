@@ -68,7 +68,6 @@ public class GameComponent extends JComponent {
 	    this.hud = hud;
 	    setOpaque(true);
 
-	    setOpaque(true);		
 	    
 		this.p = new Player(400, 100, 5, 10, this);
 
@@ -106,8 +105,6 @@ public class GameComponent extends JComponent {
 			for (Entity e : this.enemies) {
 				e.drawOn(g2);
 			}
-			
-			p.drawOn(g2);
 			
 			for (Block b : this.blocks) {
 				b.drawOn(g2);
@@ -152,15 +149,23 @@ public class GameComponent extends JComponent {
 //					}
 //				}
 //			}
-			
+			List<Entity> toRemove2 = new ArrayList<>();
 			for( Entity e: enemies){
 				for( AbstractPlatform p2: platforms){
 						if (e.overlaps(p2)) {
 							e.collideWithPlatform(p2);
 						}
+						if (e.overlaps(p2)) {
+							e.collideWithPlatform(p2);
+						}
+						
 					}
+				if (e.overlaps(p)) {
+					toRemove2.add(e);
+					hud.loseHealth1();
 				}
-			
+			}
+			enemies.removeAll(toRemove2);
 			List<Block> toRemove = new ArrayList<>();
 			for (Block b : blocks) {
 			    double dx = b.x - p.x, dy = b.y - p.y;
@@ -168,6 +173,7 @@ public class GameComponent extends JComponent {
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
 			    	hud.addCoin(1);
+			    	hud.gainScore();
 			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
 			    }
 			}
@@ -237,10 +243,10 @@ public class GameComponent extends JComponent {
 		public void downPressed() {
 			this.p.moveDown();
 		}
-		public void moveUpRight() {
-			this.p.moveUp();
-			this.p.moveRight();
-		}
+//		public void moveUpRight() {
+//			this.p.moveUp();
+//			this.p.moveRight();
+//		}
 		
 		
 

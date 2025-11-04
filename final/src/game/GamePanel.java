@@ -122,6 +122,7 @@ private void buildKeys() {
 	                case KeyEvent.VK_RIGHT -> canvas.rightPressed();
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> canvas.downPressed();
+
 	                case KeyEvent.VK_UP ->{
 	                	if(!canPress) {
 	                		return;
@@ -144,6 +145,7 @@ private void buildKeys() {
 //	                case KeyEvent.VK_UP -> canvas.moveUp();
 //	                case KeyEvent.VK_DOWN -> canvas.moveDown();
 //	                case KeyEvent.VK_UP && KeyEvent.VK_RIGHT -> canvas.moveUpRight();
+
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();
@@ -163,9 +165,9 @@ private void buildKeys() {
 //	                }
 
 	                case KeyEvent.VK_S -> {
-	                    ScoreManager.save(hudModel.getScore(), hudModel.getcoinCount());
+	                    ScoreManager.save(hudModel.getHealth1(), hudModel.getcoinCount());
 	                    // quick feedback (optional)
-	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getcoinCount());
+	                    System.out.println("Saved: score=" + hudModel.getHealth1() + ", balls=" + hudModel.getcoinCount());
 	                }
 	                
 	                default -> {

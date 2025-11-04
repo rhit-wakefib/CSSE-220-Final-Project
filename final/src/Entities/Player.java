@@ -24,6 +24,7 @@ public class Player extends Entity {
 	
 	private static final int WIDTH = 30;
 	private static final int HEIGHT = 30;
+	private int Health;
 
 
     Color color = Color.RED;
@@ -33,9 +34,17 @@ public class Player extends Entity {
     public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
 		isPlayer = true;
+		this.Health = 3;
         loadSprite();
     }
-
+    
+    public int getHealth() {
+    	return Health;
+    }
+    public int loseHealth() {
+    	return Health-=1;
+    }
+    
 
 	@Override
 	public void drawOn(Graphics2D g2) {
@@ -46,11 +55,12 @@ public class Player extends Entity {
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
     	} else {
     	
+    		
   
     	}
 	}
 	
-
+	
 	@Override
 	public void collideWithPlatform(AbstractPlatform platform) {
 
@@ -58,24 +68,13 @@ public class Player extends Entity {
 		this.y = platform.getY()-30;
 		if(up == false) {
 
-//		if (this.y > platform.getY()) {
-//				this.y = platform.getY();
-//			} else {
-//			this.y = platform.getY();
-////			reverseDirection(); // delete later just for test
-//			}
-//		this.x = this.x + (platform.getX() - this.x);
-		//this.y = platform.getY()-30;
-		if(up == false&&this.y == platform.getY()-30) {
+		if(up == false||this.y == platform.getY()-30) {
 			this.y = platform.getY()-35;
 			this.update();
 		}
-//		if(up == true && this.y == platform.getY() + 40) {
-//			this.y = platform.getY() + 45;
-//			this.update();
-//		}
 
 		this.update();
 		}
 	}
+	
 }
