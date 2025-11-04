@@ -136,9 +136,9 @@ private void buildKeys() {
 //	                }
 
 	                case KeyEvent.VK_S -> {
-	                    ScoreManager.save(hudModel.getScore(), hudModel.getcoinCount());
+	                    ScoreManager.save(hudModel.getHealth1(), hudModel.getcoinCount());
 	                    // quick feedback (optional)
-	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getcoinCount());
+	                    System.out.println("Saved: score=" + hudModel.getHealth1() + ", balls=" + hudModel.getcoinCount());
 	                }
 	                
 	                default -> {

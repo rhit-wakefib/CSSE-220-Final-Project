@@ -27,6 +27,7 @@ public class Player extends Entity {
 	
 	private static final int WIDTH = 30;
 	private static final int HEIGHT = 30;
+	private int Health;
 
 
     Color color = Color.RED;
@@ -36,9 +37,17 @@ public class Player extends Entity {
     public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
 		isPlayer = true;
+		this.Health = 3;
         loadSprite();
     }
-
+    
+    public int getHealth() {
+    	return Health;
+    }
+    public int loseHealth() {
+    	return Health-=1;
+    }
+    
 
 	@Override
 	public void drawOn(Graphics2D g2) {
@@ -52,6 +61,7 @@ public class Player extends Entity {
   
     	}
 	}
+	
 	
 	@Override
 	public void collideWithPlatform(AbstractPlatform platform) {
