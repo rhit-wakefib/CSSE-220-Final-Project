@@ -68,10 +68,14 @@ public class Player extends Entity {
 //			}
 //		this.x = this.x + (platform.getX() - this.x);
 		//this.y = platform.getY()-30;
-		if(up == false||this.y == platform.getY()-30) {
+		if(up == false&&this.y == platform.getY()-30) {
 			this.y = platform.getY()-35;
 			this.update();
 		}
+//		if(up == true && this.y == platform.getY() + 40) {
+//			this.y = platform.getY() + 45;
+//			this.update();
+//		}
 
 		this.update();
 		}
