@@ -43,7 +43,7 @@ public class HudViewer extends JLabel {
                 null,
                 "You lost all of your lives!",
                 "Game Over",
-                javax.swing.JOptionPane.QUESTION_MESSAGE);
+                javax.swing.JOptionPane.PLAIN_MESSAGE);
             hud.health = 3;
             
         }
