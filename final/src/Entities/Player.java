@@ -2,10 +2,7 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 
 import game.GameComponent;
 import platforms.AbstractPlatform;
@@ -53,27 +50,4 @@ public class Player extends Entity {
     	}
 	}
 	
-	@Override
-	public void collideWithPlatform(AbstractPlatform platform) {
-
-
-		this.y = platform.getY()-30;
-		if(up == false) {
-
-//		if (this.y > platform.getY()) {
-//				this.y = platform.getY();
-//			} else {
-//			this.y = platform.getY();
-////			reverseDirection(); // delete later just for test
-//			}
-//		this.x = this.x + (platform.getX() - this.x);
-		//this.y = platform.getY()-30;
-		if(up == false||this.y == platform.getY()-30) {
-			this.y = platform.getY()-35;
-			this.update();
-		}
-
-		this.update();
-		}
-	}
 }

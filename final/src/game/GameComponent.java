@@ -222,19 +222,19 @@ public class GameComponent extends JComponent {
 			}
 		}
 		
-		public void moveLeft() {
+		public void leftPressed() {
 			this.p.moveLeft();
 		}
 		
-		public void moveRight() {
+		public void rightPressed() {
 			this.p.moveRight();
 		}
 		
-		public void moveUp() {
+		public void upPressed() {
 			this.p.moveUp();
 		}
 		
-		public void moveDown() {
+		public void downPressed() {
 			this.p.moveDown();
 		}
 		
