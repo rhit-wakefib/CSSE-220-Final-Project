@@ -41,7 +41,6 @@ public abstract class Entity extends GameObject {
 	protected boolean eRight = false;
 	protected boolean eLeft = false;
 
-    int radius = 15;
 	
 	public Entity(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent, int width, int height) {
 		super(gameComponent,x,y,xVelocity,yVelocity, width,height);
@@ -94,7 +93,7 @@ public abstract class Entity extends GameObject {
 				loadSprite();
 				eLeft = false;
 			}
-			
+
 			this.x += this.xVelocity;
 			this.y += this.yVelocity;
 

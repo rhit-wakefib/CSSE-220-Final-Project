@@ -27,7 +27,7 @@ import platforms.AbstractPlatform;
 
 public class Enemy extends Entity {
 
-	private static final int WIDTH = 80;
+	private static final int WIDTH = 20;
 	private static final int HEIGHT = 20;
 
     Color color = Color.RED;
@@ -44,9 +44,9 @@ public class Enemy extends Entity {
 	@Override
 	public void drawOn(Graphics2D g2) {
 		if (spriteLoaded) {
-    		int drawX = (int) this.getX() - radius;
-    		int drawY = (int) this.getY() - radius;
-    		int size = radius *2;
+    		int drawX = (int) this.getX() - WIDTH;
+    		int drawY = (int) this.getY() - WIDTH;
+    		int size = WIDTH *2;
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
     	} else {
     	
@@ -67,7 +67,7 @@ public class Enemy extends Entity {
 	@Override
 	public void collideWithPlatform(AbstractPlatform plat) {
 		this.yVelocity = 0;
-		this.y = plat.getY() - (plat.getHeight()/2);
+		this.y = plat.getY() - HEIGHT;
 		eLeft = true;
 		this.update();
 //		bounced =true;
