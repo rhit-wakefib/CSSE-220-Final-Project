@@ -2,10 +2,7 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 
 import game.GameComponent;
 import platforms.AbstractPlatform;
@@ -53,6 +50,7 @@ public class Player extends Entity {
     	}
 	}
 	
+
 	@Override
 	public void collideWithPlatform(AbstractPlatform platform) {
 
