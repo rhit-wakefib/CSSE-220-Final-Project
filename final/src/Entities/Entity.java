@@ -55,10 +55,12 @@ public abstract class Entity extends GameObject {
 	
 	@Override 
 	public void update() {
+		
+		this.y += 3;
 			
 		if(isPlayer) {
 			
-			this.y += 3;
+
 			if (left) {
 				this.x -= xVelocity;
 				loadSprite();
