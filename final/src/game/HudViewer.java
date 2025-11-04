@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
- * @author's Braden Wakefield Terrel Doxie
+ * @author's Braden Wakefield Terrell Doxie
  * 
  **************************************************************************************** 
 
