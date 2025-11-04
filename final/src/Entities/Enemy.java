@@ -2,12 +2,7 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 
 import game.GameComponent;
 import platforms.AbstractPlatform;
@@ -68,7 +63,7 @@ public class Enemy extends Entity {
 	public void collideWithPlatform(AbstractPlatform plat) {
 		this.yVelocity = 0;
 		this.y = plat.getY() - HEIGHT;
-		eLeft = true;
+		if(!spriteLoaded) eLeft = true;
 		this.update();
 //		bounced =true;
 	}

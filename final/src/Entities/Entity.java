@@ -111,7 +111,7 @@ public abstract class Entity extends GameObject {
 	
 	public void loadSprite() {
 		
-		if(isPlayer) {
+		if(isPlayer && !spriteLoaded) {
 			
 			if(left) {
 		        try {
@@ -127,7 +127,8 @@ public abstract class Entity extends GameObject {
 					spriteLoaded = false;
 
 				}
-			} else if (right) {
+			} 
+			else if (right) {
 		        	try {
 			        	if (Player.class.getResource("epicPRight.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
@@ -142,7 +143,7 @@ public abstract class Entity extends GameObject {
 					}
 //		        	spriteLoaded = false;
 
-		        }
+		    }
 			else if (up) {
 	        	try {
 		        	if (Player.class.getResource("pDown.png") != null) {
@@ -170,7 +171,9 @@ public abstract class Entity extends GameObject {
 					spriteLoaded = false;
 					//e.printStackTrace();
 				}
-	        } else {
+	        } 
+			
+			else {
 		        try {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
@@ -184,7 +187,9 @@ public abstract class Entity extends GameObject {
 					//e.printStackTrace();
 				}
 	        		}
-			} else if (!isPlayer) {
+			} 
+		
+			else if (!isPlayer) {
 				if(eRight) {
 			        try {
 			        	if (Player.class.getResource("eright.png") != null) {
