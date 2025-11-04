@@ -68,7 +68,6 @@ public class GameComponent extends JComponent {
 	    this.hud = hud;
 	    setOpaque(true);
 
-	    setOpaque(true);		
 	    
 		this.p = new Player(400, 100, 5, 10, this);
 
@@ -106,8 +105,6 @@ public class GameComponent extends JComponent {
 			for (Entity e : this.enemies) {
 				e.drawOn(g2);
 			}
-			
-			p.drawOn(g2);
 			
 			for (Block b : this.blocks) {
 				b.drawOn(g2);
@@ -237,10 +234,10 @@ public class GameComponent extends JComponent {
 		public void downPressed() {
 			this.p.moveDown();
 		}
-		public void moveUpRight() {
-			this.p.moveUp();
-			this.p.moveRight();
-		}
+//		public void moveUpRight() {
+//			this.p.moveUp();
+//			this.p.moveRight();
+//		}
 		
 
 
