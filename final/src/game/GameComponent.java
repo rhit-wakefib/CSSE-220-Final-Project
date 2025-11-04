@@ -71,15 +71,15 @@ public class GameComponent extends JComponent {
 	    
 		this.p = new Player(400, 100, 5, 10, this);
 
-		this.platforms.add(new Platform(200, 100, 0, 0, this));
-		this.platforms.add(new Platform(30,  100, 0, 0, this));
-		this.platforms.add(new Platform(130, 150, 0, 0, this));
-		this.platforms.add(new Platform(300, 300, 0, 0, this));
+		this.platforms.add(new Platform(100, 300, 0, 0, this));
+		this.platforms.add(new Platform(180, 300, 0, 0, this));
+		this.platforms.add(new Platform(260, 300, 0, 0, this));
+		this.platforms.add(new Platform(340, 300, 0, 0, this));
 		
   //Models
         
 		this.enemies.add(new Enemy(300, 168, 3, 0, this));
-		this.enemies.add(new Enemy(350, 170, 0, 5, this));
+		this.enemies.add(new Enemy(350, 170, -1, 5, this));
 		
 		this.blocks.add(new Block(500,200,1));
 

@@ -49,7 +49,7 @@ public class Player extends Entity {
 	@Override
 	public void drawOn(Graphics2D g2) {
 		if (spriteLoaded) {
-    		int drawX = (int) this.getX() - WIDTH;
+    		int drawX = (int) (this.getX() - WIDTH);
     		int drawY = (int) this.getY() - HEIGHT;
     		int size = WIDTH*2;
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
@@ -65,11 +65,11 @@ public class Player extends Entity {
 	public void collideWithPlatform(AbstractPlatform platform) {
 
 
-		this.y = platform.getY()-30;
+		this.y = platform.getY()-HEIGHT;
 		if(up == false) {
 
 		if(up == false||this.y == platform.getY()-30) {
-			this.y = platform.getY()-35;
+			this.y = platform.getY()-HEIGHT;
 			this.update();
 		}
 
