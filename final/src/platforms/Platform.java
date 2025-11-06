@@ -46,11 +46,11 @@ public class Platform extends AbstractPlatform {
 	}
 
 	public void drawOn(Graphics2D g) {
-		if (this.invincibleCount > 0) {
-			g.setColor(new Color(255, 255, 0));			
-		} else {
-			g.setColor(new Color(RED_START-rainDropsCollected, GREEN_START-rainDropsCollected, BLUE_START+rainDropsCollected));
-		}
+//		if (this.invincibleCount > 0) {
+//			g.setColor(new Color(255, 255, 0));			
+//		} else {
+//			g.setColor(new Color(RED_START-rainDropsCollected, GREEN_START-rainDropsCollected, BLUE_START+rainDropsCollected));
+//		}
 		g.fill(new Rectangle2D.Double(getBoundingBox().x, getBoundingBox().y, this.getWidth(), this.getHeight()));
 	}
 

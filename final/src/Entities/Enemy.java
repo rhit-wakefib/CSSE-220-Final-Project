@@ -24,8 +24,8 @@ import platforms.AbstractPlatform;
 
 public class Enemy extends Entity {
 
-	private static final int WIDTH = 20;
-	private static final int HEIGHT = 20;
+	private static final int WIDTH = 50;
+	private static final int HEIGHT = 50;
 
     Color color = Color.RED;
 
@@ -55,13 +55,9 @@ public class Enemy extends Entity {
 		if (spriteLoaded) {
     		int drawX = (int) this.getX() - WIDTH;
     		int drawY = (int) this.getY() - WIDTH;
-    		int size = WIDTH *2;
+    		int size = WIDTH;
     		g2.drawImage(sprite, drawX, drawY, size, size, null);
-    	} else {
-    	
-//        g2.setColor(color);
-//        g2.fillOval((int)this.getX() - radius, (int)this.getY() - radius, radius * 2, radius * 2);		
-    	}
+    	} 
 	}
 	
 	@Override

@@ -24,8 +24,8 @@ import platforms.AbstractPlatform;
 
 public class Player extends Entity {
 	
-	private static final int WIDTH = 30;
-	private static final int HEIGHT = 30;
+	private static final int WIDTH = 50;
+	private static final int HEIGHT = 50;
 	private int Health;
 
 
@@ -64,13 +64,10 @@ public class Player extends Entity {
 	public void drawOn(Graphics2D g2) {
 		if (spriteLoaded) {
     		int drawX = (int) (this.getX() - WIDTH);
-    		int drawY = (int) this.getY() - HEIGHT;
-    		int size = WIDTH*2;
-    		g2.drawImage(sprite, drawX, drawY, size, size, null);
-    	} else {
-    	
-    		
-  
+    		int drawY = (int) (this.getY() - HEIGHT);
+    		int size = WIDTH;
+//    		g2.drawImage(sprite, drawX, drawY, size, size, null);
+    		g2.drawRect(drawX, drawY, size, size);
     	}
 	}
 	
