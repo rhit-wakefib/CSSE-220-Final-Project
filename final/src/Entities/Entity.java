@@ -33,7 +33,7 @@ public abstract class Entity extends GameObject {
 	//movement
 	protected boolean left = false;
 	protected boolean right = false;
-	protected boolean up = false;
+	public boolean up = false;
 	protected boolean down = false;
 	protected boolean isPlayer = false;
 	
@@ -52,61 +52,65 @@ public abstract class Entity extends GameObject {
 	}
 	
 	
-	@Override 
+
+	@Override //claude below CHANGE THIS
 	public void update() {
-		
-		this.y += 3;
-			
-		if(isPlayer) {
-			
+	    
+	    if(isPlayer) {
+	        // Only apply gravity if not actively jumping
+	        if (!up) {
+	            this.y += 3;  // Apply gravity when not jumping
+	        }
+	        
+	        if (left) {
+	            this.x -= xVelocity;
+	            loadSprite();
+	            left = false;
+	        }
+	        
+	        else if (right) {
+	            this.x += xVelocity;
+	            loadSprite();
+	            right = false;
+	        }
+	        
+	        else if (up) {
+	            this.y -= yVelocity;  // Jump up
+	            loadSprite();
+	            // Don't set up = false here - let the timer handle it
+	        }
+	        
+	        else if (down) {
+	            this.y += yVelocity;
+	            loadSprite();
+	            down = false;
+	        }
+	        
+	    } else {
+	        // Enemies always have gravity
+	        this.y += 3;
+	        
+	        if(eRight) {
+	          
+	            loadSprite();
+	            eRight = false;
+	        } else if (eLeft){
+	           
+	            loadSprite();
+	            eLeft = false;
+	        }
 
-			if (left) {
-				this.x -= xVelocity;
-				loadSprite();
-				left = false;
-			}
-			
-			else if (right) {
-				this.x += xVelocity;
-				loadSprite();
-				right = false;
-			}
-			
-			else if (up) {
-				this.y -= yVelocity;
-				loadSprite();
-				up = false;
-			}
-			
-			else if (down) {
-				this.y += yVelocity;
-				loadSprite();
-				down = false;
-			}
-			
-		} else {
-			
-			if(eRight) {
-				loadSprite();
-				eRight = false;
-			} else if (eLeft){
-				loadSprite();
-				eLeft = false;
-			}
-
-			this.x += this.xVelocity;
-			this.y += this.yVelocity;
-
-			}
-		
-		if (this.y >= gameComponent.getGroundY()) {
-			if(isPlayer) {
-				this.y = gameComponent.getGroundY();
-			} else {
-			this.y = gameComponent.getGroundY();
-//			reverseDirection(); // delete later just for test
-			}
-		}
+	        this.x += this.xVelocity;
+	        this.y += this.yVelocity;
+	    }
+	    
+	    if (this.y >= gameComponent.getGroundY()) {
+	        if(isPlayer) {
+	            this.y = gameComponent.getGroundY();
+	        } else {
+	            this.y = gameComponent.getGroundY();
+	        }
+	    }
 	}
 	
 	public void loadSprite() {

@@ -122,23 +122,27 @@ private void buildKeys() {
 	                case KeyEvent.VK_RIGHT -> canvas.rightPressed();
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> canvas.downPressed();
-
-	                case KeyEvent.VK_UP ->{
-	                	if(!canPress) {
-	                		return;
-	                		
-	                	}
-	                	canPress = false;
-	                	javax.swing.Timer upTimer = new javax.swing.Timer(50, ev -> canvas.upPressed());
-	                    upTimer.start();
+                    //claude below CHANGE THIS
+	                case KeyEvent.VK_UP -> {
+	                    if(!canPress) {
+	                        return;
+	                    }
+	                    canPress = false;
+	                    
+	                    // Set up to true and let it stay true for the duration
+	                    canvas.p.up = true;
+	                    
+	                    // After the jump duration, set it back to false
 	                    new javax.swing.Timer(upDuration, ev -> {
-	                        upTimer.stop();
+	                        canvas.p.up = false;
 	                        ((javax.swing.Timer) ev.getSource()).stop();
 	                    }).start();
-	                	new javax.swing.Timer(Cooldown, ev->{
-	                		canPress = true;
-	                		((javax.swing.Timer) ev.getSource()).stop();
-	                	}).start();
+	                    
+	                    // Cooldown timer before next jump
+	                    new javax.swing.Timer(Cooldown, ev -> {
+	                        canPress = true;
+	                        ((javax.swing.Timer) ev.getSource()).stop();
+	                    }).start();
 	                }
 //	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
 //	                case KeyEvent.VK_RIGHT -> canvas.moveRight();

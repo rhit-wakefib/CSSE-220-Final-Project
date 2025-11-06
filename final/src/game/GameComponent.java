@@ -57,7 +57,7 @@ public class GameComponent extends JComponent {
 	private List<Entity> enemies = new ArrayList<>();
 	private List<Block> blocks = new ArrayList<>();
 	
-	private Player p;
+	Player p;
 	
 	Timer timer;
 	
