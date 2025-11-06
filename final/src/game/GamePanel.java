@@ -118,18 +118,18 @@ private void buildKeys() {
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
-	                case KeyEvent.VK_LEFT -> canvas.leftPressed();
-	                case KeyEvent.VK_RIGHT -> canvas.rightPressed();
+	                case KeyEvent.VK_LEFT -> canvas.p.left = true;
+	                case KeyEvent.VK_RIGHT -> canvas.p.right = true;
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
-	                case KeyEvent.VK_DOWN -> canvas.downPressed();
+	                case KeyEvent.VK_DOWN -> canvas.p.down = true;
 
-	                case KeyEvent.VK_UP ->{
+	                case KeyEvent.VK_UP -> {
 	                	if(!canPress) {
 	                		return;
 	                		
 	                	}
 	                	canPress = false;
-	                	javax.swing.Timer upTimer = new javax.swing.Timer(50, ev -> canvas.upPressed());
+	                	javax.swing.Timer upTimer = new javax.swing.Timer(50, ev -> canvas.p.up = true);
 	                    upTimer.start();
 	                    new javax.swing.Timer(upDuration, ev -> {
 	                        upTimer.stop();
@@ -177,8 +177,8 @@ private void buildKeys() {
 	                        "Invalid key! Use arrow keys, or SPACE.",
 	                        "Invalid Key",
 	                        javax.swing.JOptionPane.WARNING_MESSAGE
-	                        
 	                    );
+	                    
 	                    timer.start();}
 	            }
 	        }

@@ -2,7 +2,9 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 
 import game.GameComponent;
 import platforms.AbstractPlatform;
@@ -35,8 +37,20 @@ public class Player extends Entity {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
 		isPlayer = true;
 		this.Health = 3;
-        loadSprite();
+		try {
+		if (Player.class.getResource("epicplayerss.png") != null) {
+			sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+			spriteLoaded = true;
+        	} else {
+        		System.out.println("no file could be found");
+        	}
+		} catch (IOException e) {
+
+			spriteLoaded = false;
+			//e.printStackTrace();
+		}
     }
+
     
     public int getHealth() {
     	return Health;

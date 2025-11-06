@@ -57,7 +57,7 @@ public class GameComponent extends JComponent {
 	private List<Entity> enemies = new ArrayList<>();
 	private List<Block> blocks = new ArrayList<>();
 	
-	private Player p;
+	public Player p;
 	
 	Timer timer;
 	
@@ -231,21 +231,6 @@ public class GameComponent extends JComponent {
 			}
 		}
 		
-		public void leftPressed() {
-			this.p.moveLeft();
-		}
-		
-		public void rightPressed() {
-			this.p.moveRight();
-		}
-		
-		public void upPressed() {
-			this.p.moveUp();
-		}
-		
-		public void downPressed() {
-			this.p.moveDown();
-		}
 //		public void moveUpRight() {
 //			this.p.moveUp();
 //			this.p.moveRight();

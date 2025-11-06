@@ -2,7 +2,9 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 
 import game.GameComponent;
 import platforms.AbstractPlatform;
@@ -32,7 +34,19 @@ public class Enemy extends Entity {
 
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);    	
 		isPlayer = false;
-		loadSprite();
+		try {
+        	if (Player.class.getResource("eleft.png") != null) {
+				sprite = ImageIO.read(Player.class.getResource("eleft.png"));
+				spriteLoaded = true;
+	        	} else {
+	        		System.out.println("no file could be found");
+	        	}
+		} catch (IOException e) {
+
+			spriteLoaded = false;
+			//e.printStackTrace();
+			
+		}
     }
 
 
@@ -55,7 +69,11 @@ public class Enemy extends Entity {
 		super.update();
 		if (isOffScreen()  ) {
 			this.reverseDirection();
-			eRight= true;
+			if(this.getX() <= 0) {
+				eRight = true;
+			} else {
+				eLeft = true;
+			}
 		}
 	}
 	
