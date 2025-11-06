@@ -58,6 +58,7 @@ public class GameComponent extends JComponent {
 	private List<Block> blocks = new ArrayList<>();
 	
 	public Player p;
+
 	
 	Timer timer;
 	

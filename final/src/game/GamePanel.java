@@ -1,40 +1,40 @@
 package game;
-
+ 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+ 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.swing.Timer;
-
-
+ 
+ 
 /**
- * @author's Braden Wakefield Terrell Doxie
- * 
- **************************************************************************************** 
-
- *         REQUIRED HELP CITATION
-
- *         DONE: "only used CSSE220 materials"
-
- *************************************************************************************** 
- *
- */
-
+* @author's Braden Wakefield Terrell Doxie
+*
+****************************************************************************************
+ 
+*         REQUIRED HELP CITATION
+ 
+*         DONE: "only used CSSE220 materials"
+ 
+***************************************************************************************
+*
+*/
+ 
 /**
- * Controller class for the game.
- * Handles user input (buttons + keys) and controls the main Timer loop.
- */
-
+* Controller class for the game.
+* Handles user input (buttons + keys) and controls the main Timer loop.
+*/
+ 
 public class GamePanel extends JPanel {
 	
     // models
-
+ 
 	private final HudModel hudModel = new HudModel();
 	// views
 	private final GameComponent canvas = new GameComponent(hudModel);
@@ -43,9 +43,9 @@ public class GamePanel extends JPanel {
 	private final Timer timer;
 	private boolean canPress = true;
 	private final int Cooldown = 700;
-	//private final int moveAmount = 10; 
+	//private final int moveAmount = 10;
 	private int upDuration = 500;
-
+ 
 	
     /**
      * Constructs the main game panel with controls and keyboard support.
@@ -57,10 +57,10 @@ public class GamePanel extends JPanel {
         layered.setOpaque(false);  // Make layered panel transparent
         // view
         canvas.setOpaque(false); // panels sets the background if you want it from canvas, set it to true
-        layered.add(hudView); 
+        layered.add(hudView);
     	layered.add(canvas);
     	layered.add(canvas);
-
+ 
     	hudView.setOpaque(false);         // Transparent so no gray background
     	hudView.setAlignmentX(0f);        // Left edge
     	hudView.setAlignmentY(0f);        // Top edge
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel {
     	
     
         this.buildKeys();
-
+ 
         // game loop
         this.timer = new Timer(30, e -> tick());
     	
@@ -82,7 +82,7 @@ public class GamePanel extends JPanel {
     
     // control animation
     private void tick() {
-
+ 
     	hudView.refresh(hudModel);
     	canvas.updateState();
     	canvas.repaint();
@@ -99,7 +99,7 @@ public class GamePanel extends JPanel {
 //        right.addActionListener(e -> { canvas.moveDelta(+10); requestFocusInWindow(); });
 //        center.addActionListener(e -> { canvas.setX(canvas.WIDTH/2); requestFocusInWindow(); });
 //
-//        controls.add(left); 
+//        controls.add(left);
 //        controls.add(right);
 //        controls.add(center);
         return controls;
@@ -119,33 +119,37 @@ private void buildKeys() {
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
 	                case KeyEvent.VK_LEFT -> canvas.p.left = true;
-	                case KeyEvent.VK_RIGHT -> canvas.p.right = true;
+	                case KeyEvent.VK_RIGHT -> canvas.p.right =true;
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> canvas.p.down = true;
-
+                    //claude below CHANGE THIS
 	                case KeyEvent.VK_UP -> {
-	                	if(!canPress) {
-	                		return;
-	                		
-	                	}
-	                	canPress = false;
-	                	javax.swing.Timer upTimer = new javax.swing.Timer(50, ev -> canvas.p.up = true);
-	                    upTimer.start();
+	                    if(!canPress) {
+	                        return;
+	                    }
+	                    canPress = false;
+	                    
+	                    // Set up to true and let it stay true for the duration
+	                    canvas.p.up = true;
+	                    
+	                    // After the jump duration, set it back to false
 	                    new javax.swing.Timer(upDuration, ev -> {
-	                        upTimer.stop();
+	                        canvas.p.up = false;
 	                        ((javax.swing.Timer) ev.getSource()).stop();
 	                    }).start();
-	                	new javax.swing.Timer(Cooldown, ev->{
-	                		canPress = true;
-	                		((javax.swing.Timer) ev.getSource()).stop();
-	                	}).start();
+	                    
+	                    // Cooldown timer before next jump
+	                    new javax.swing.Timer(Cooldown, ev -> {
+	                        canPress = true;
+	                        ((javax.swing.Timer) ev.getSource()).stop();
+	                    }).start();
 	                }
 //	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
 //	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
 //	                case KeyEvent.VK_UP -> canvas.moveUp();
 //	                case KeyEvent.VK_DOWN -> canvas.moveDown();
 //	                case KeyEvent.VK_UP && KeyEvent.VK_RIGHT -> canvas.moveUpRight();
-
+ 
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();
@@ -157,13 +161,13 @@ private void buildKeys() {
 ////	                    canvas.addBall(x, y);
 //	                }
 	                
-
+ 
 //	                case KeyEvent.VK_S -> {
 //	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
 //	                    // quick feedback (optional)
 //	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
 //	                }
-
+ 
 	                case KeyEvent.VK_S -> {
 	                    ScoreManager.save(hudModel.getHealth1(), hudModel.getcoinCount());
 	                    // quick feedback (optional)
@@ -177,12 +181,13 @@ private void buildKeys() {
 	                        "Invalid key! Use arrow keys, or SPACE.",
 	                        "Invalid Key",
 	                        javax.swing.JOptionPane.WARNING_MESSAGE
+	                        
 	                    );
-	                    
 	                    timer.start();}
 	            }
 	        }
 	    });
 	}
-
+ 
 }
+ 

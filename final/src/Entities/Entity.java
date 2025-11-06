@@ -1,24 +1,24 @@
 package Entities;
-
+ 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
+ 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-
+ 
 import game.GameComponent;
 import game.GameObject;
 import platforms.AbstractPlatform;
-
+ 
 /**
- * @author Braden Wakefield, Terrel Doxie
- * 
- *  * Help Citation
- * used CSSE220 materials
- * player sprite is from https://cl.pinterest.com/pin/785244885024471618/
- * enemy sprite https://favpng.com/png_view/minecraft-creeper-minecraft-creeper-character-png/XfFXQzHD
- */
-
+* @author Braden Wakefield, Terrel Doxie
+*
+*  * Help Citation
+* used CSSE220 materials
+* player sprite is from https://cl.pinterest.com/pin/785244885024471618/
+* enemy sprite https://favpng.com/png_view/minecraft-creeper-minecraft-creeper-character-png/XfFXQzHD
+*/
+ 
 public abstract class Entity extends GameObject {
 	protected int health = 3;
 	protected int damage;
@@ -26,15 +26,9 @@ public abstract class Entity extends GameObject {
     protected BufferedImage sprite;
     protected boolean spriteLoaded = false;
     
-    // player directional sprite loaded
-    protected boolean leftSpriteLoaded = false;
-    protected boolean rightSpriteLoaded = false;
-    protected boolean upSpriteLoaded = false;
-    protected boolean downSpriteLoaded = false;
-    
-    // enemy directional sprite loaded
-    protected boolean eLeftSpriteLoaded = false;
-    protected boolean eRightSpriteLoaded = false;
+	
+	
+	
 	
 	//movement
 	public boolean left = false;
@@ -43,10 +37,10 @@ public abstract class Entity extends GameObject {
 	public boolean down = false;
 	protected boolean isPlayer = false;
 	
-	// enemy movement
+	
 	protected boolean eRight = false;
 	protected boolean eLeft = false;
-
+ 
 	
 	public Entity(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent, int width, int height) {
 		super(gameComponent,x,y,xVelocity,yVelocity, width,height);
@@ -58,78 +52,76 @@ public abstract class Entity extends GameObject {
 	}
 	
 	
-	@Override 
+ 
+	@Override //claude below CHANGE THIS
 	public void update() {
-		
-		this.y += 3;
-			
-		if(isPlayer) {
-			
-
-			if (left) {
-				this.x -= xVelocity;
-				loadSprite();
-				left = false;
-			}
-			
-			else if (right) {
-				this.x += xVelocity;
-				loadSprite();
-				right = false;
-			}
-			
-			else if (up) {
-				this.y -= yVelocity;
-				loadSprite();
-				up = false;
-			}
-			
-			else if (down) {
-				this.y += yVelocity;
-				loadSprite();
-				down = false;
-			}
-			
-		} else {
-			
-			if(eRight) {
-				eLeftSpriteLoaded = false;
-				loadSprite();
-				eRight = false;
-			} else if (eLeft){
-				eRightSpriteLoaded = false;
-				loadSprite();
-				eLeft = false;
-			}
-
-			this.x += this.xVelocity;
-			this.y += this.yVelocity;
-
-			}
-		
-		if (this.y >= gameComponent.getGroundY()) {
-			if(isPlayer) {
-				this.y = gameComponent.getGroundY();
-			} else {
-			this.y = gameComponent.getGroundY();
-//			reverseDirection(); // delete later just for test
-			}
-		}
+	    
+	    if(isPlayer) {
+	        // Only apply gravity if not actively jumping
+	        if (!up) {
+	            this.y += 3;  // Apply gravity when not jumping
+	        }
+	        
+	        if (left) {
+	            this.x -= xVelocity;
+	            loadSprite();
+	            left = false;
+	        }
+	        
+	        else if (right) {
+	            this.x += xVelocity;
+	            loadSprite();
+	            right = false;
+	        }
+	        
+	        else if (up) {
+	            this.y -= yVelocity;  // Jump up
+	            loadSprite();
+	            // Don't set up = false here - let the timer handle it
+	        }
+	        
+	        else if (down) {
+	            this.y += yVelocity;
+	            loadSprite();
+	            down = false;
+	        }
+	        
+	    } else {
+	        // Enemies always have gravity
+	        this.y += 3;
+	        
+	        if(eRight) {
+	          
+	            loadSprite();
+	            eRight = false;
+	        } else if (eLeft){
+	           
+	            loadSprite();
+	            eLeft = false;
+	        }
+ 
+	        this.x += this.xVelocity;
+	        this.y += this.yVelocity;
+	    }
+	    
+	    if (this.y >= gameComponent.getGroundY()) {
+	        if(isPlayer) {
+	            this.y = gameComponent.getGroundY();
+	        } else {
+	            this.y = gameComponent.getGroundY();
+	        }
+	    }
 	}
 	
 	public void loadSprite() {
 		
-		if(isPlayer) {
+		if(isPlayer && !spriteLoaded) {
 			
-			if(left && !leftSpriteLoaded) {
+			if(left) {
 		        try {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
 						sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 						spriteLoaded = true;
-						leftSpriteLoaded = true;
-						rightSpriteLoaded = false;
-						upSpriteLoaded = false;
-						downSpriteLoaded = false;
 			        	} else {
 			        		System.out.println("no file could be found");
 			        	}
@@ -137,39 +129,30 @@ public abstract class Entity extends GameObject {
 		
 					
 					spriteLoaded = false;
-
+ 
 				}
-			} 
-			else if (right && !rightSpriteLoaded) {
+			}
+			else if (right) {
 		        	try {
 			        	if (Player.class.getResource("epicPRight.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("epicPRight.png"));
 							spriteLoaded = true;
-							leftSpriteLoaded = false;
-							rightSpriteLoaded = true;
-							upSpriteLoaded = false;
-							downSpriteLoaded = false;
-							
 				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
 					} catch (IOException e) {
 			
 						spriteLoaded = false;
-
+ 
 					}
 //		        	spriteLoaded = false;
-
+ 
 		    }
-			else if (up && !upSpriteLoaded) {
+			else if (up) {
 	        	try {
 		        	if (Player.class.getResource("pDown.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("pDown.png"));
 					spriteLoaded = true;
-					leftSpriteLoaded = false;
-					rightSpriteLoaded = false;
-					upSpriteLoaded = true;
-					downSpriteLoaded = false;
 		        	} else {
 		        		System.out.println("no file could be found");
 		        	}
@@ -179,15 +162,11 @@ public abstract class Entity extends GameObject {
 					//e.printStackTrace();
 				}
 	        }
-			else if (down && !downSpriteLoaded) {
+			else if (down) {
 	        	try {
 		        	if (Player.class.getResource("epicplayerss.png") != null) {
 					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
 					spriteLoaded = true;
-					leftSpriteLoaded = false;
-					rightSpriteLoaded = false;
-					upSpriteLoaded = false;
-					downSpriteLoaded = true;
 		        	} else {
 		        		System.out.println("no file could be found");
 		        	}
@@ -196,32 +175,30 @@ public abstract class Entity extends GameObject {
 					spriteLoaded = false;
 					//e.printStackTrace();
 				}
-	        } 
+	        }
 			
-//			else {
-//		        try {
-//		        	if (Player.class.getResource("epicplayerss.png") != null) {
-//					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
-//					spriteLoaded = true;
-//		        	} else {
-//		        		System.out.println("no file could be found");
-//		        	}
-//				} catch (IOException e) {
-//		
-//					spriteLoaded = false;
-//					//e.printStackTrace();
-//				}
-//	        		}
-			} 
+			else {
+		        try {
+		        	if (Player.class.getResource("epicplayerss.png") != null) {
+					sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
+					spriteLoaded = true;
+		        	} else {
+		        		System.out.println("no file could be found");
+		        	}
+				} catch (IOException e) {
+		
+					spriteLoaded = false;
+					//e.printStackTrace();
+				}
+	        		}
+			}
 		
 			else if (!isPlayer) {
-				if(eRight && !eRightSpriteLoaded) {
+				if(eRight) {
 			        try {
 			        	if (Player.class.getResource("eright.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("eright.png"));
 							spriteLoaded = true;
-						    eLeftSpriteLoaded = false;
-						    eRightSpriteLoaded = true;
 				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
@@ -232,13 +209,11 @@ public abstract class Entity extends GameObject {
 						//e.printStackTrace();
 					}
 			        
-				} else if (eLeft && !eLeftSpriteLoaded) {
+				} else if (eLeft) {
 					try {
 			        	if (Player.class.getResource("eleft.png") != null) {
 							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
 							spriteLoaded = true;
-						    eLeftSpriteLoaded = true;
-						    eRightSpriteLoaded = false;
 				        	} else {
 				        		System.out.println("no file could be found");
 				        	}
@@ -249,25 +224,43 @@ public abstract class Entity extends GameObject {
 						//e.printStackTrace();
 						
 					}
-//				} else {
-//					try {
-//			        	if (Player.class.getResource("eleft.png") != null) {
-//							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
-//							spriteLoaded = true;
-//				        	} else {
-//				        		System.out.println("no file could be found");
-//				        	}
-//					} catch (IOException e) {
-//	
-//						spriteLoaded = false;
-//						//e.printStackTrace();
-//						
-//					}
+				} else {
+					try {
+			        	if (Player.class.getResource("eleft.png") != null) {
+							sprite = ImageIO.read(Player.class.getResource("eleft.png"));
+							spriteLoaded = true;
+				        	} else {
+				        		System.out.println("no file could be found");
+				        	}
+					} catch (IOException e) {
+	
+						spriteLoaded = false;
+						//e.printStackTrace();
+						
+					}
 				}
 		}
 	}
 	
+	
+	
+	public void moveLeft() {
+		left = true;
+	}
+	
+	public void moveRight() {
+		right = true;
+	}
+	
+	public void moveUp() {
+		up = true;
+	}
+ 
+	public void moveDown() {
+		down = true;
+	}
 		
+	
 	
 //    public void move(int width, int height) {
 //        x += dx;
