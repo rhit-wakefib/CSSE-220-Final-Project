@@ -66,8 +66,8 @@ public class Player extends Entity {
     		int drawX = (int) (this.getX() - WIDTH);
     		int drawY = (int) (this.getY() - HEIGHT);
     		int size = WIDTH;
-//    		g2.drawImage(sprite, drawX, drawY, size, size, null);
-    		g2.drawRect(drawX, drawY, size, size);
+    		g2.drawImage(sprite, drawX, drawY, size, size, null);
+//    		g2.drawRect(drawX, drawY, size, size);
     	}
 	}
 	

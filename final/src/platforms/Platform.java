@@ -1,6 +1,7 @@
 package platforms;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 import game.GameComponent;
@@ -15,24 +16,25 @@ import game.GameComponent;
 public class Platform extends AbstractPlatform {
 	private static final int WIDTH = 80;
 	private static final int HEIGHT = 20;
-	private static final int RED_START = 222, GREEN_START=184, BLUE_START=135, WATER_INCREMENT=5;
-	private static final int DROPS_ON_EXPLODE = 50;
-	private int rainDropsCollected = 0;
-	private int invincibleCount = 0;
-	private boolean bounced;
+//	private static final int RED_START = 222, GREEN_START=184, BLUE_START=135, WATER_INCREMENT=5;
+//	private static final int DROPS_ON_EXPLODE = 50;
+//	private int rainDropsCollected = 0;
+//	private int invincibleCount = 0;
+//	private boolean bounced;
 	
 	public Platform(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);
 	}
 
 	public boolean willExplode() {
-		return this.rainDropsCollected >= 255 - BLUE_START;
+//		return this.rainDropsCollected >= 255 - BLUE_START;
+		return false;
 	}
 
 	public void collideWithPlatform(AbstractPlatform otherPlatform ) {
 		this.reverseDirection();
 		this.update();
-		bounced =true;
+//		bounced =true;
 	}
 
 	@Override
@@ -41,17 +43,16 @@ public class Platform extends AbstractPlatform {
 		if ( isOffScreen()  ) {
 //			this.reverseDirection();
 		}
-		invincibleCount--;
-		bounced =false;
+//		invincibleCount--;
+//		bounced =false;
 	}
 
 	public void drawOn(Graphics2D g) {
-//		if (this.invincibleCount > 0) {
-//			g.setColor(new Color(255, 255, 0));			
-//		} else {
-//			g.setColor(new Color(RED_START-rainDropsCollected, GREEN_START-rainDropsCollected, BLUE_START+rainDropsCollected));
-//		}
-		g.fill(new Rectangle2D.Double(getBoundingBox().x, getBoundingBox().y, this.getWidth(), this.getHeight()));
+
+		int drawX = (int) (this.getX() - WIDTH);
+		int drawY = (int) (this.getY() - HEIGHT);
+		Rectangle r = new Rectangle(drawX, drawY, WIDTH, HEIGHT);
+		g.fill(r);
 	}
 
 	
@@ -82,14 +83,14 @@ public class Platform extends AbstractPlatform {
 	
 	@Override
 	public void addDrop() {
-		if (this.invincibleCount <= 0) {
-			this.rainDropsCollected = this.rainDropsCollected + WATER_INCREMENT;
-		}
+//		if (this.invincibleCount <= 0) {
+//			this.rainDropsCollected = this.rainDropsCollected + WATER_INCREMENT;
+//		}
 	}
 	
 	@Override
 	public void makeInvinciple() {
-		this.invincibleCount = 50;
+//		this.invincibleCount = 50;
 	}
 	
 	

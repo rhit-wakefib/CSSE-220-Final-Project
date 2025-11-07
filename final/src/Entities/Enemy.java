@@ -63,12 +63,15 @@ public class Enemy extends Entity {
 	@Override
 	public void update() {
 		super.update();
-		if (isOffScreen()  ) {
-			this.reverseDirection();
+		if (isOffScreen()) {
 			if(this.getX() <= 0) {
 				eRight = true;
+				this.reverseDirection();
+
 			} else {
 				eLeft = true;
+				this.reverseDirection();
+//
 			}
 		}
 	}
@@ -77,7 +80,6 @@ public class Enemy extends Entity {
 	public void collideWithPlatform(AbstractPlatform plat) {
 		this.yVelocity = 0;
 		this.y = plat.getY() - HEIGHT;
-		if(!spriteLoaded) eLeft = true;
 		this.update();
 //		bounced =true;
 	}

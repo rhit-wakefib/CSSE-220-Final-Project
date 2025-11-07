@@ -60,7 +60,7 @@ public abstract class GameObject {
 	
 	public void reverseDirection() {
 		this.xVelocity = -this.xVelocity;
-		this.yVelocity = -this.yVelocity;
+//		this.yVelocity = -this.yVelocity;
 	}
 	
 	
