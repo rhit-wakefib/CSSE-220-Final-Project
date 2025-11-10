@@ -114,6 +114,11 @@ public class GamePanel extends JPanel {
 			return down1;
 		
     }
+    public static void setDown() {
+        
+		 down1 = false;
+	
+}
 private void buildKeys() {
 		
 		this.setFocusable(true);

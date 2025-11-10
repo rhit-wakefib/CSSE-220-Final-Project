@@ -85,7 +85,8 @@ public class GameComponent extends JComponent {
 		this.enemies.add(new Enemy(350, 170, -6, 5, this));
 
 		
-		this.blocks.add(new Block(500,200,1));
+		this.blocks.add(new Block(600,groundY,1));
+		this.blocks.add(new Block(500,groundY,1));
 
 	
 	}
@@ -182,6 +183,7 @@ public class GameComponent extends JComponent {
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
 			    	hud.addCoin(1);
+			    	GamePanel.setDown();
 //			    	hud.gainScore();
 			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
 			    }
