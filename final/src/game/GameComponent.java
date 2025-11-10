@@ -164,6 +164,7 @@ public class GameComponent extends JComponent {
 						}
 						
 					}
+				// Handle enemy collisions with player
 				if (e.overlaps(p)) {
 					toRemove2.add(e);
 					hud.loseHealth1();
@@ -177,7 +178,7 @@ public class GameComponent extends JComponent {
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
 			    	hud.addCoin(1);
-			    	hud.gainScore();
+//			    	hud.gainScore();
 			    	//ADD SOMETHING TO UPDATE SCORE HERE SINCE U TOUCHED A COIN 
 			    }
 			}

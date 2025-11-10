@@ -42,10 +42,7 @@ public class HudModel {
     public void loseHealth1() { 
     	this.health-=1;
     	}
-    public void gainScore() { 
-    	this.score+=10;
-
-    	}
+   
     public void addCoin(int toadd) { 
     	this.coinCount +=toadd; 
     	this.scoreCount = coinCount * 10; 
