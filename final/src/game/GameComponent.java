@@ -170,11 +170,15 @@ public class GameComponent extends JComponent {
 					hud.loseHealth1();
 				}
 			}
+			
 			enemies.removeAll(toRemove2);
+			
 			List<Block> toRemove = new ArrayList<>();
+			if (GamePanel.getDown() == true) {
 			for (Block b : blocks) {
 			    double dx = b.x - p.x, dy = b.y - p.y;
 			    int rSum = b.radius + 30;
+			  
 			    if (dx*dx + dy*dy <= rSum*rSum) {
 			    	toRemove.add(b);
 			    	hud.addCoin(1);
@@ -183,7 +187,7 @@ public class GameComponent extends JComponent {
 			    }
 			}
 			blocks.removeAll(toRemove);
-			
+			}
 			for( AbstractPlatform p1: platforms){
 				for( AbstractPlatform p2: platforms){
 					if (p1 != p2) {

@@ -45,6 +45,7 @@ public class GamePanel extends JPanel {
 	private final int Cooldown = 700;
 	//private final int moveAmount = 10;
 	private int upDuration = 500;
+	public static boolean down1;
  
 	
     /**
@@ -108,7 +109,11 @@ public class GamePanel extends JPanel {
     
     public void startGame() { timer.start(); }
     public void stopGame()  { timer.stop();  }
+    public static boolean getDown() {
     
+			return down1;
+		
+    }
 private void buildKeys() {
 		
 		this.setFocusable(true);
@@ -121,7 +126,10 @@ private void buildKeys() {
 	                case KeyEvent.VK_LEFT -> canvas.p.left = true;
 	                case KeyEvent.VK_RIGHT -> canvas.p.right =true;
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
-	                case KeyEvent.VK_DOWN -> canvas.p.down = true;
+	                case KeyEvent.VK_DOWN -> {
+	                	canvas.p.down = true;
+	                	down1 = true;
+	                	}
                     //claude below CHANGE THIS
 	                case KeyEvent.VK_UP -> {
 	                    if(!canPress) {
