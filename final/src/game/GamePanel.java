@@ -129,13 +129,13 @@ private void buildKeys() {
 	        public void keyPressed(KeyEvent e) {
 	            switch (e.getKeyCode()) {
 	                case KeyEvent.VK_LEFT -> canvas.p.left = true;
-	                case KeyEvent.VK_RIGHT -> canvas.p.right =true;
+	                case KeyEvent.VK_RIGHT -> canvas.p.right = true;
 //	                case KeyEvent.VK_UP -> canvas.upPressed();
 	                case KeyEvent.VK_DOWN -> {
 	                	canvas.p.down = true;
 	                	down1 = true;
 	                	}
-                    //claude below CHANGE THIS
+                    
 	                case KeyEvent.VK_UP -> {
 	                    if(!canPress) {
 	                        return;
@@ -157,32 +157,16 @@ private void buildKeys() {
 	                        ((javax.swing.Timer) ev.getSource()).stop();
 	                    }).start();
 	                }
-//	                case KeyEvent.VK_LEFT -> canvas.moveLeft();
-//	                case KeyEvent.VK_RIGHT -> canvas.moveRight();
-//	                case KeyEvent.VK_UP -> canvas.moveUp();
-//	                case KeyEvent.VK_DOWN -> canvas.moveDown();
-//	                case KeyEvent.VK_UP && KeyEvent.VK_RIGHT -> canvas.moveUpRight();
+
  
 	                case KeyEvent.VK_SPACE -> {
 	                    if (timer.isRunning()) timer.stop();
 	                    else timer.start();
 	                }
 	                
-//	                case KeyEvent.VK_B -> {
-//	                    int x = (int)(Math.random() * canvas.getWidth());
-//	                    int y = (int)(Math.random() * canvas.getHeight());
-////	                    canvas.addBall(x, y);
-//	                }
-	                
- 
-//	                case KeyEvent.VK_S -> {
-//	                    ScoreManager.save(hudModel.getScore(), hudModel.getBallCount());
-//	                    // quick feedback (optional)
-//	                    System.out.println("Saved: score=" + hudModel.getScore() + ", balls=" + hudModel.getBallCount());
-//	                }
  
 	                case KeyEvent.VK_S -> {
-	                    ScoreManager.save(hudModel.getHealth1(), hudModel.getcoinCount());
+//	                    ScoreManager.save(hudModel.getHealth1(), hudModel.getcoinCount());
 	                    // quick feedback (optional)
 	                    System.out.println("Saved: score=" + hudModel.getHealth1() + ", balls=" + hudModel.getcoinCount());
 	                }

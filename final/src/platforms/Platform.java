@@ -49,10 +49,10 @@ public class Platform extends AbstractPlatform {
 
 	public void drawOn(Graphics2D g) {
 
-		int drawX = (int) (this.getX() - WIDTH);
-		int drawY = (int) (this.getY() - HEIGHT);
-		Rectangle r = new Rectangle(drawX, drawY, WIDTH, HEIGHT);
-		g.fill(r);
+		int drawX = (int) (getX() - (WIDTH/2));
+	    int drawY = (int) (getY() - (HEIGHT*2));
+	    g.setColor(Color.BLACK);
+	    g.fillRect(drawX, drawY, WIDTH, HEIGHT);
 	}
 
 	
