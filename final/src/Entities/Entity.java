@@ -8,7 +8,7 @@ import game.GameObject;
 
 /**
  * @author Braden Wakefield, Terrel Doxie
- * Help Citation: used CSSE220 materials
+ * Help Citation: used claude for refactoring
  */
 public abstract class Entity extends GameObject {
     protected int health = 3;

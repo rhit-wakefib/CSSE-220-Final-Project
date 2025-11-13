@@ -16,7 +16,7 @@ import platforms.Platform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie, Charlie Kofahl
- * Help Citation: used CSSE220 materials
+ *Help Citation: used claude for refactoring
  */
 public class GameComponent extends JComponent {
     public static final int WIDTH = 1000;
