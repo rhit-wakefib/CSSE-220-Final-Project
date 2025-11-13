@@ -5,6 +5,7 @@ package game;
  * Encapsulates attack logic for better separation of concerns.
  * 
  * @author Braden Wakefield, Terrel Doxie
+ * Help Citation: used claude for refactoring
  */
 public class AttackController {
     private boolean attackMode = false;

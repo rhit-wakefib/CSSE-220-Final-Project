@@ -9,7 +9,7 @@ import javax.swing.Timer;
 
 /**
  * @author Braden Wakefield, Terrell Doxie
- * Help Citation: used CSSE220 materials
+ * Help Citation: used claude for refactoring
  */
 public class GamePanel extends JPanel {
     private final HudModel hudModel = new HudModel();

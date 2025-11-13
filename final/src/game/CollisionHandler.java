@@ -10,6 +10,7 @@ import platforms.AbstractPlatform;
  * Separates collision logic from game component for better cohesion.
  * 
  * @author Braden Wakefield, Terrel Doxie
+ * Help Citation: used claude for refactoring
  */
 public class CollisionHandler {
     private GameComponent gameComponent;

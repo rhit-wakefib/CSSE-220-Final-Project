@@ -7,7 +7,8 @@ import platforms.AbstractPlatform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie
- * Help Citation: used CSSE220 materials
+ *Help Citation: used claude for refactoring
+ * Player sprite: https://cl.pinterest.com/pin/785244885024471618/
  */
 public class Player extends Entity {
     private static final int WIDTH = 50;

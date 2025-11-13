@@ -7,7 +7,8 @@ import platforms.AbstractPlatform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie
- * Help Citation: used CSSE220 materials
+ * Help Citation: used claude for refactoring
+ * https://favpng.com/png_view/minecraft-creeper-minecraft-creeper-character-png/XfFXQzHD
  */
 public class Enemy extends Entity {
     private static final int WIDTH = 50;
