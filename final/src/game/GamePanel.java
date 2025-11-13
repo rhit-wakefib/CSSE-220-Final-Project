@@ -18,12 +18,12 @@ public class GamePanel extends JPanel {
     private final Timer timer;
     
     private JumpController jumpController;
-    private AttackController attackController;
+    private InteractController attackController;
     
     public GamePanel() {
         setupLayout();
         this.jumpController = new JumpController(canvas.p);
-        this.attackController = new AttackController();
+        this.attackController = new InteractController();
         canvas.collisionHandler.setGamePanel(this); // Link collision handler to panel
         buildKeys();
         this.timer = new Timer(30, e -> tick());
@@ -64,11 +64,11 @@ public class GamePanel extends JPanel {
     }
     
     public boolean isAttackActive() {
-        return attackController.isAttackActive();
+        return attackController.isInteractActive();
     }
     
     public void deactivateAttack() {
-        attackController.deactivateAttack();
+        attackController.deactivateInteract();
     }
     
     private void buildKeys() {
@@ -89,7 +89,7 @@ public class GamePanel extends JPanel {
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             canvas.p.moveRight();
         } else if (keyCode == KeyEvent.VK_DOWN) {
-            attackController.activateAttack();
+            attackController.activateInteract();
         } else if (keyCode == KeyEvent.VK_UP) {
             jumpController.initiateJump();
         } else if (keyCode == KeyEvent.VK_SPACE) {
