@@ -3,7 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 import Entities.Entity;
-import platforms.AbstractPlatform;
+import Entities.Platform;
 
 /**
  * Handles all collision detection and response logic.
@@ -16,6 +16,8 @@ public class CollisionHandler {
     private GameComponent gameComponent;
     private HudModel hud;
     private GamePanel gamePanel;
+    
+    private static final double PLAYER_COLLECTION_RADIUS = 30.0;
     
     public CollisionHandler(GameComponent gameComponent, HudModel hud) {
         this.gameComponent = gameComponent;
@@ -36,11 +38,11 @@ public class CollisionHandler {
     private void handleEnemyCollisions() {
         List<Entity> enemiesToRemove = new ArrayList<>();
         List<Entity> enemies = gameComponent.getEnemies();
-        List<AbstractPlatform> platforms = gameComponent.getPlatforms();
+        List<Platform> platforms = gameComponent.getPlatforms();
         
         for (Entity enemy : enemies) {
             // Enemy-platform collisions
-            for (AbstractPlatform platform : platforms) {
+            for (Platform platform : platforms) {
                 if (enemy.overlaps(platform)) {
                     enemy.collideWithPlatform(platform);
                 }
@@ -65,9 +67,9 @@ public class CollisionHandler {
         List<Block> blocks = gameComponent.getBlocks();
         
         for (Block block : blocks) {
-            if (isPlayerNearBlock(block)) {
+            if (block.isNearby(gameComponent.p, PLAYER_COLLECTION_RADIUS)) {
                 blocksToRemove.add(block);
-                hud.addCoin(1);
+                hud.addCoin(block.getValue());
             }
         }
         
@@ -75,21 +77,14 @@ public class CollisionHandler {
         gamePanel.deactivateAttack();
     }
     
-    private boolean isPlayerNearBlock(Block block) {
-        double dx = block.x - gameComponent.p.x;
-        double dy = block.y - gameComponent.p.y;
-        int radiusSum = block.radius + 30;
-        return dx * dx + dy * dy <= radiusSum * radiusSum;
-    }
-    
     private void handlePlatformCollisions() {
-        List<AbstractPlatform> platforms = gameComponent.getPlatforms();
+        List<Platform> platforms = gameComponent.getPlatforms();
         
         // Platform-platform collisions
         for (int i = 0; i < platforms.size(); i++) {
             for (int j = i + 1; j < platforms.size(); j++) {
-                AbstractPlatform p1 = platforms.get(i);
-                AbstractPlatform p2 = platforms.get(j);
+                Platform p1 = platforms.get(i);
+                Platform p2 = platforms.get(j);
                 if (p1.overlaps(p2)) {
                     p1.collideWithPlatform(p2);
                 }
@@ -97,7 +92,7 @@ public class CollisionHandler {
         }
         
         // Player-platform collisions
-        for (AbstractPlatform platform : platforms) {
+        for (Platform platform : platforms) {
             if (gameComponent.p.overlaps(platform)) {
                 gameComponent.p.collideWithPlatform(platform);
             }
@@ -105,10 +100,10 @@ public class CollisionHandler {
     }
     
     private void cleanupRemovedObjects() {
-        List<AbstractPlatform> platforms = gameComponent.getPlatforms();
-        List<AbstractPlatform> toRemove = new ArrayList<>();
+        List<Platform> platforms = gameComponent.getPlatforms();
+        List<Platform> toRemove = new ArrayList<>();
         
-        for (AbstractPlatform platform : platforms) {
+        for (Platform platform : platforms) {
             if (platform.shouldRemove()) {
                 toRemove.add(platform);
             }

@@ -3,7 +3,6 @@ package Entities;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import game.GameComponent;
-import platforms.AbstractPlatform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie
@@ -56,7 +55,7 @@ public class Enemy extends Entity {
         } else {
             sprite = leftSprite;
         }
-        spriteLoaded = (sprite != null);
+        spriteLoaded = (sprite != null); // true if the sprite was loaded else false. 
     }
     
     @Override
@@ -69,7 +68,7 @@ public class Enemy extends Entity {
     }
     
     @Override
-    public void collideWithPlatform(AbstractPlatform platform) {
+    public void collideWithPlatform(Platform platform) {
         this.yVelocity = 0;
         this.y = platform.getY() - HEIGHT;
     }

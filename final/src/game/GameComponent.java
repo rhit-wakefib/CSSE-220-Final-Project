@@ -10,13 +10,12 @@ import java.util.List;
 import javax.swing.JComponent;
 import Entities.Enemy;
 import Entities.Entity;
+import Entities.Platform;
 import Entities.Player;
-import platforms.AbstractPlatform;
-import platforms.Platform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie, Charlie Kofahl
- *Help Citation: used claude for refactoring
+ * Help Citation: used claude for refactoring
  */
 public class GameComponent extends JComponent {
     public static final int WIDTH = 1000;
@@ -27,7 +26,7 @@ public class GameComponent extends JComponent {
     private final int groundY = HEIGHT - (HEIGHT / 4);
     private final HudModel hud;
     
-    private final List<AbstractPlatform> platforms = new ArrayList<>();
+    private final List<Platform> platforms = new ArrayList<>();
     private final List<Entity> enemies = new ArrayList<>();
     private final List<Block> blocks = new ArrayList<>();
     
@@ -54,8 +53,9 @@ public class GameComponent extends JComponent {
         enemies.add(new Enemy(225, 150, 2, 2, this));
         enemies.add(new Enemy(350, 170, -6, 5, this));
         
-        blocks.add(new Block(600, groundY, 1));
-        blocks.add(new Block(500, groundY, 1));
+        // Updated to pass GameComponent reference
+        blocks.add(new Block(this, 400, 250, 1));
+        blocks.add(new Block(this, 500, groundY, 1));
     }
     
     @Override
@@ -75,7 +75,7 @@ public class GameComponent extends JComponent {
     }
     
     private void drawGameObjects(Graphics2D g2) {
-        for (AbstractPlatform platform : platforms) {
+        for (Platform platform : platforms) {
             platform.drawOn(g2);
         }
         for (Entity enemy : enemies) {
@@ -91,7 +91,7 @@ public class GameComponent extends JComponent {
         return groundY;
     }
     
-    public List<AbstractPlatform> getPlatforms() {
+    public List<Platform> getPlatforms() {
         return platforms;
     }
     
@@ -111,7 +111,7 @@ public class GameComponent extends JComponent {
     }
     
     private void updateGameObjects() {
-        for (AbstractPlatform platform : platforms) {
+        for (Platform platform : platforms) {
             platform.update();
         }
         for (Entity enemy : enemies) {

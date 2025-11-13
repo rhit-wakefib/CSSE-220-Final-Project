@@ -3,7 +3,6 @@ package Entities;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import game.GameComponent;
-import platforms.AbstractPlatform;
 
 /**
  * @author Braden Wakefield, Terrel Doxie
@@ -101,13 +100,13 @@ public class Player extends Entity {
     public void drawOn(Graphics2D g2) {
         if (spriteLoaded) {
             int drawX = (int) (this.x - WIDTH);
-            int drawY = (int) (this.y - HEIGHT);
+            int drawY = (int) (this.y-HEIGHT);
             g2.drawImage(sprite, drawX, drawY, WIDTH, WIDTH, null);
         }
     }
     
     @Override
-    public void collideWithPlatform(AbstractPlatform platform) {
+    public void collideWithPlatform(Platform platform) {
         if (!isJumping) {
             this.y = platform.getY() - HEIGHT;
         }

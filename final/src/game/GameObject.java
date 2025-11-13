@@ -2,7 +2,9 @@ package game;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import platforms.AbstractPlatform;
+
+import Entities.Platform;
+
 
 /**
  * @author's Braden Wakefield 
@@ -93,7 +95,7 @@ public abstract class GameObject {
 		return y > gameComponent.getHeight();
 	}
 	
-	public abstract void collideWithPlatform(AbstractPlatform otherPlatform );
+	public abstract void collideWithPlatform(Platform otherPlatform );
 	
 
 

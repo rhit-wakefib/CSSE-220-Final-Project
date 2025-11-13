@@ -32,13 +32,7 @@ public class HudModel {
     public int getHealth1() { return health; }
 
     public int getcoinCount() { return coinCount; }
-    public int getScore1() { return score; }
-    
-
-    public void addScore(int delta) { 
-    	this.scoreCount = coinCount * 10; 
-    }
-
+      
     public void loseHealth1() { 
     	this.health-=1;
     	}
@@ -47,14 +41,9 @@ public class HudModel {
     	this.coinCount +=toadd; 
     	this.scoreCount = coinCount * 10; 
     	}
-    public void setcoinCount(int count) { 
-    	this.coinCount = count; 
-    	}
-    public void setScore(int score) {
-    	this.scoreCount = score;
-    }
+    
+
     public void updateAll(int width, int height) {
-    	//removig this for now since its only use is a tick counter / displayer it has no actual use
     }
 }
     
