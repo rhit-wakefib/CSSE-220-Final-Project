@@ -14,7 +14,7 @@ import game.GameComponent;
  *
  */
 public class Platform extends AbstractPlatform {
-	private static final int WIDTH = 80;
+	private static final int WIDTH = 120;
 	private static final int HEIGHT = 20;
 //	private static final int RED_START = 222, GREEN_START=184, BLUE_START=135, WATER_INCREMENT=5;
 //	private static final int DROPS_ON_EXPLODE = 50;
@@ -24,11 +24,6 @@ public class Platform extends AbstractPlatform {
 	
 	public Platform(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
 		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);
-	}
-
-	public boolean willExplode() {
-//		return this.rainDropsCollected >= 255 - BLUE_START;
-		return false;
 	}
 
 	public void collideWithPlatform(AbstractPlatform otherPlatform ) {
@@ -64,10 +59,7 @@ public class Platform extends AbstractPlatform {
 //		}
 //	}
 	
-	@Override
-	public boolean shouldRemove() {
-		return willExplode();
-	}
+
 	
 	
 	//Methods shared with UserControlledPlatform but not with GameObject

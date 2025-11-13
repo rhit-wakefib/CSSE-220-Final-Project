@@ -1,92 +1,75 @@
 package Entities;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import java.awt.image.BufferedImage;
 import game.GameComponent;
 import platforms.AbstractPlatform;
 
 /**
- * @author's Braden Wakefield Terrel Doxie
- * 
- **************************************************************************************** 
-
- *         REQUIRED HELP CITATION
-
- *         DONE: "only used CSSE220 materials"
-
- *************************************************************************************** 
- *
+ * @author Braden Wakefield, Terrel Doxie
+ * Help Citation: used CSSE220 materials
  */
-
 public class Enemy extends Entity {
-
-	private static final int WIDTH = 50;
-	private static final int HEIGHT = 50;
-
-    Color color = Color.RED;
-
-
-    public Enemy(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
-
-		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);    	
-		isPlayer = false;
-		try {
-        	if (Player.class.getResource("eleft.png") != null) {
-				sprite = ImageIO.read(Player.class.getResource("eleft.png"));
-				spriteLoaded = true;
-	        	} else {
-	        		System.out.println("no file could be found");
-	        	}
-		} catch (IOException e) {
-
-			spriteLoaded = false;
-			//e.printStackTrace();
-			
-		}
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 50;
+    
+    private boolean movingRight;
+    
+    // Cached sprites - loaded once at construction
+    private BufferedImage leftSprite;
+    private BufferedImage rightSprite;
+    
+    public Enemy(int x, int y, int xVelocity, int yVelocity, 
+                 GameComponent gameComponent) {
+        super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);
+        this.movingRight = (xVelocity >= 0);
+        loadAllSprites();
+        updateSprite();
     }
-
-
-	@Override
-	public void drawOn(Graphics2D g2) {
-		if (spriteLoaded) {
-    		int drawX = (int) this.getX() - WIDTH;
-    		int drawY = (int) this.getY() - WIDTH;
-    		int size = WIDTH;
-    		g2.drawImage(sprite, drawX, drawY, size, size, null);
-    	} 
-	}
-	
-	@Override
-	public void update() {
-		super.update();
-		if (isOffScreen()) {
-			if(this.getX() <= 0) {
-				eRight = true;
-				this.reverseDirection();
-
-			} else {
-				eLeft = true;
-				this.reverseDirection();
-//
-			}
-		}
-	}
-	
-	@Override
-	public void collideWithPlatform(AbstractPlatform plat) {
-		this.yVelocity = 0;
-		this.y = plat.getY() - HEIGHT;
-		this.update();
-//		bounced =true;
-	}
-
-
     
-
+    /**
+     * Load all sprites once during initialization
+     */
+    private void loadAllSprites() {
+        leftSprite = loadSpriteFromResource("eleft.png");
+        rightSprite = loadSpriteFromResource("eright.png");
+    }
+    
+    @Override
+    protected void updatePosition() {
+        this.x += this.xVelocity;
+        
+        if (isOffScreen()) {
+            reverseDirection();
+            movingRight = !movingRight;
+            updateSprite();
+        }
+    }
+    
+    /**
+     * Switch to the appropriate cached sprite based on movement direction
+     */
+    private void updateSprite() {
+        if (movingRight) {
+            sprite = rightSprite;
+        } else {
+            sprite = leftSprite;
+        }
+        spriteLoaded = (sprite != null);
+    }
+    
+    @Override
+    public void drawOn(Graphics2D g2) {
+        if (spriteLoaded) {
+            int drawX = (int) this.x - WIDTH;
+            int drawY = (int) this.y - WIDTH;
+            g2.drawImage(sprite, drawX, drawY, WIDTH, WIDTH, null);
+        }
+    }
+    
+    @Override
+    public void collideWithPlatform(AbstractPlatform platform) {
+        this.yVelocity = 0;
+        this.y = platform.getY() - HEIGHT;
+    }
 }
-    
-

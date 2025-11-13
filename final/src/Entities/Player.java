@@ -1,91 +1,114 @@
 package Entities;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import java.awt.image.BufferedImage;
 import game.GameComponent;
 import platforms.AbstractPlatform;
 
 /**
- * @author's Braden Wakefield Terrel Doxie
- * 
- **************************************************************************************** 
-
- *         REQUIRED HELP CITATION
-
- *         DONE: "only used CSSE220 materials"
-
- *************************************************************************************** 
- *
+ * @author Braden Wakefield, Terrel Doxie
+ * Help Citation: used CSSE220 materials
  */
-
 public class Player extends Entity {
-	
-	private static final int WIDTH = 50;
-	private static final int HEIGHT = 50;
-	private int Health;
-
-
-    Color color = Color.RED;
-//    private BufferedImage sprite;
-//    private boolean spriteLoaded = false;
-
-    public Player(int x, int y, int xVelocity, int yVelocity, GameComponent gameComponent) {
-		super(x, y, xVelocity, yVelocity, gameComponent, WIDTH,HEIGHT);
-		isPlayer = true;
-		this.Health = 3;
-		try {
-		if (Player.class.getResource("epicplayerss.png") != null) {
-			sprite = ImageIO.read(Player.class.getResource("epicplayerss.png"));
-			spriteLoaded = true;
-        	} else {
-        		System.out.println("no file could be found");
-        	}
-		} catch (IOException e) {
-
-			spriteLoaded = false;
-			//e.printStackTrace();
-		}
-    }
-
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 50;
     
-    public int getHealth() {
-    	return Health;
-    }
-    public int loseHealth() {
-    	return Health-=1;
+    private boolean isJumping = false;
+    private String currentDirection = "left";
+    
+    // Cached sprites - loaded once at construction
+    private BufferedImage leftSprite;
+    private BufferedImage rightSprite;
+    private BufferedImage jumpSprite;
+    
+    public Player(int x, int y, int xVelocity, int yVelocity, 
+                  GameComponent gameComponent) {
+        super(x, y, xVelocity, yVelocity, gameComponent, WIDTH, HEIGHT);
+        loadAllSprites();
+        sprite = leftSprite; // Set initial sprite
+        spriteLoaded = (sprite != null);
     }
     
-
-	@Override
-	public void drawOn(Graphics2D g2) {
-		if (spriteLoaded) {
-    		int drawX = (int) (this.getX() - WIDTH);
-    		int drawY = (int) (this.getY() - HEIGHT);
-    		int size = WIDTH;
-    		g2.drawImage(sprite, drawX, drawY, size, size, null);
-//    		g2.drawRect(drawX, drawY, size, size);
-    	}
-	}
-	
-	
-	@Override
-	public void collideWithPlatform(AbstractPlatform platform) {
-
-
-		this.y = platform.getY()-HEIGHT;
-		if(up == false) {
-
-		if(up == false||this.y == platform.getY()-30) {
-			this.y = platform.getY()-HEIGHT;
-			this.update();
-		}
-
-		this.update();
-		}
-	}
-	
+    /**
+     * Load all sprites once during initialization
+     */
+    private void loadAllSprites() {
+        leftSprite = loadSpriteFromResource("epicplayerss.png");
+        rightSprite = loadSpriteFromResource("epicPRight.png");
+        jumpSprite = loadSpriteFromResource("pDown.png");
+    }
+    
+    public void moveLeft() {
+        this.x -= xVelocity;
+        currentDirection = "left";
+        updateSprite();
+    }
+    
+    public void moveRight() {
+        this.x += xVelocity;
+        currentDirection = "right";
+        updateSprite();
+    }
+    
+    public void startJump() {
+        isJumping = true;
+        currentDirection = "up";
+        updateSprite();
+    }
+    
+    public void performJump() {
+        if (isJumping) {
+            this.y -= yVelocity;
+        }
+    }
+    
+    public void endJump() {
+        isJumping = false;
+    }
+    
+    public boolean isJumping() {
+        return isJumping;
+    }
+    
+    @Override
+    protected void applyGravity() {
+        if (!isJumping) {
+            super.applyGravity();
+        }
+    }
+    
+    @Override
+    protected void updatePosition() {
+        performJump();
+    }
+    
+    /**
+     * Switch to the appropriate cached sprite based on current direction
+     */
+    private void updateSprite() {
+        if (currentDirection.equals("left")) {
+            sprite = leftSprite;
+        } else if (currentDirection.equals("right")) {
+            sprite = rightSprite;
+        } else if (currentDirection.equals("up")) {
+            sprite = jumpSprite;
+        }
+        spriteLoaded = (sprite != null);
+    }
+    
+    @Override
+    public void drawOn(Graphics2D g2) {
+        if (spriteLoaded) {
+            int drawX = (int) (this.x - WIDTH);
+            int drawY = (int) (this.y - HEIGHT);
+            g2.drawImage(sprite, drawX, drawY, WIDTH, WIDTH, null);
+        }
+    }
+    
+    @Override
+    public void collideWithPlatform(AbstractPlatform platform) {
+        if (!isJumping) {
+            this.y = platform.getY() - HEIGHT;
+        }
+    }
 }

@@ -11,7 +11,7 @@ import platforms.AbstractPlatform;
 
  *         REQUIRED HELP CITATION
 
- *         DONE: "only used CSSE220 materials"
+ *         Claude for refactoring to ensure best principles
 
  *************************************************************************************** 
  *
