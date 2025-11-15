@@ -22,7 +22,7 @@ public class GamePanel extends JPanel {
     
     public GamePanel() {
         setupLayout();
-        this.jumpController = new JumpController(canvas.p);
+        this.jumpController = new JumpController(canvas);
         this.attackController = new InteractController();
         canvas.collisionHandler.setGamePanel(this); // Link collision handler to panel
         buildKeys();

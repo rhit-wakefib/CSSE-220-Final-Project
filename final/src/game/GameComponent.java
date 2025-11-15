@@ -22,6 +22,7 @@ public class GameComponent extends JComponent {
     public static final int HEIGHT = 700;
     public static final Color BG = Color.CYAN;
     public static final Color FG = Color.GREEN;
+    public boolean level1 = true;
     
     private final int groundY = HEIGHT - (HEIGHT / 4);
     private final HudModel hud;
@@ -47,6 +48,22 @@ public class GameComponent extends JComponent {
         
         platforms.add(new Platform(400, 300, 0, 0, this));
         platforms.add(new Platform(200, 350, 0, 0, this));
+        
+        enemies.add(new Enemy(300, 168, 10, 0, this));
+        enemies.add(new Enemy(215, 170, 0, 5, this));
+        enemies.add(new Enemy(225, 150, 2, 2, this));
+        enemies.add(new Enemy(350, 170, -6, 5, this));
+        
+        // Updated to pass GameComponent reference
+        blocks.add(new Block(this, 400, 250, 1));
+        blocks.add(new Block(this, 500, groundY, 1));
+    }
+    private void initializeGameObjects2() {
+        this.p = new Player(400, groundY, 5, 10, this);
+        
+        platforms.add(new Platform(400, 300, 0, 0, this));
+        platforms.add(new Platform(200, 350, 0, 0, this));
+        platforms.add(new Platform(100, 350, 0, 0, this));
         
         enemies.add(new Enemy(300, 168, 10, 0, this));
         enemies.add(new Enemy(215, 170, 0, 5, this));
@@ -125,5 +142,12 @@ public class GameComponent extends JComponent {
     	initializeGameObjects();
     	repaint();
     	
+    }
+    public void winGame() {
+    	platforms.clear();
+    	enemies.clear();
+    	blocks.clear();
+    	initializeGameObjects2();
+    	repaint();
     }
 }

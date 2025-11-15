@@ -53,7 +53,15 @@ public class HudViewer extends JLabel {
             game.resetGame();
             
         }
-        
+        if(hud.getHealth1()!=0 && game.getBlocks().isEmpty()) {
+        	javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "You won!",
+                    "Winner",
+                    javax.swing.JOptionPane.PLAIN_MESSAGE);
+        	game.winGame();
+        	
+        }
 
         html.append("<li>Coins: ").append(hud.getcoinCount()).append("</li>");
 

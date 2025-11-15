@@ -14,17 +14,17 @@ public class JumpController {
     private static final int JUMP_DURATION = 500;
     
     private boolean canJump = true;
-    private Player player;
+    private final GameComponent game;;
     
-    public JumpController(Player player) {
-        this.player = player;
+    public JumpController(GameComponent game) {
+        this.game = game;
     }
     
     public void initiateJump() {
         if (!canJump) {
             return;
         }
-        
+       Player player = game.p;
         canJump = false;
         player.startJump();
         
