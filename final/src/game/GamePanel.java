@@ -14,7 +14,7 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel {
     private final HudModel hudModel = new HudModel();
     private final GameComponent canvas = new GameComponent(hudModel);
-    private final HudViewer hudView = new HudViewer();
+    private final HudViewer hudView = new HudViewer(canvas, hudModel);
     private final Timer timer;
     
     private JumpController jumpController;

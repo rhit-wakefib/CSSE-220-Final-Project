@@ -22,8 +22,11 @@ import javax.swing.JLabel;
 
 public class HudViewer extends JLabel {
 	Timer timer;
+	private final GameComponent game;
+	private boolean gameOver=false;
 	
-	public HudViewer() {
+	public HudViewer(GameComponent game, HudModel hud) {
+		this.game = game;
 		setOpaque(false);
 		setForeground(new Color(0, 0, 0));
         setFont(getFont().deriveFont(Font.BOLD, 13f));
@@ -45,6 +48,9 @@ public class HudViewer extends JLabel {
                 "Game Over",
                 javax.swing.JOptionPane.PLAIN_MESSAGE);
             hud.health = 3;
+            hud.coinCount = 0;
+            hud.scoreCount = 0;
+            game.resetGame();
             
         }
         

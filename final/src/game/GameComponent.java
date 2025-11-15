@@ -118,4 +118,12 @@ public class GameComponent extends JComponent {
             enemy.update();
         }
     }
+    public void resetGame() {
+    	platforms.clear();
+    	enemies.clear();
+    	blocks.clear();
+    	initializeGameObjects();
+    	repaint();
+    	
+    }
 }
