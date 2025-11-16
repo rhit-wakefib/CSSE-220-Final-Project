@@ -39,11 +39,11 @@ public class GameComponent extends JComponent {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.hud = hud;
         setOpaque(true);
-        initializeGameObjects();
+        initializeLevelOne();
         this.collisionHandler = new CollisionHandler(this, hud);
     }
     
-    private void initializeGameObjects() {
+    private void initializeLevelOne() {
         this.p = new Player(400, groundY, 5, 10, this);
         
         platforms.add(new Platform(400, 300, 0, 0, this));
@@ -58,7 +58,7 @@ public class GameComponent extends JComponent {
         blocks.add(new Block(this, 400, 250, 1));
         blocks.add(new Block(this, 500, groundY, 1));
     }
-    private void initializeGameObjects2() {
+    private void initializeLevelTwo() {
         this.p = new Player(400, groundY, 5, 10, this);
         
         platforms.add(new Platform(400, 200, 0, 0, this));
@@ -141,7 +141,7 @@ public class GameComponent extends JComponent {
     	platforms.clear();
     	enemies.clear();
     	blocks.clear();
-    	initializeGameObjects();
+    	initializeLevelOne();
     	repaint();
     	
     }
@@ -149,7 +149,7 @@ public class GameComponent extends JComponent {
     	platforms.clear();
     	enemies.clear();
     	blocks.clear();
-    	initializeGameObjects2();
+    	initializeLevelTwo();
     	repaint();
     }
 }
