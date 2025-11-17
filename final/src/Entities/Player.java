@@ -50,6 +50,7 @@ public class Player extends Entity {
         updateSprite();
     }
     
+    
     public void startJump() {
         isJumping = true;
         currentDirection = "up";
